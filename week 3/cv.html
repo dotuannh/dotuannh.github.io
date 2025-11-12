@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV - Đỗ Tú Anh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* ====== Base / Layout ====== */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ccc;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      color: #222;
+    }
+
+    /* ====== Top Navigation ====== */
+    nav#topmenu ul {
+      list-style: none;
+      background-color: #444;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav#topmenu li {
+      font-size: 20px;
+      line-height: 40px;
+      height: 40px;
+      display: inline-block;
+      padding: 20px;
+    }
+    nav#topmenu a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s, background-color 0.3s;
+    }
+    nav#topmenu a:hover {
+      color: yellow;
+      background-color: #333;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    /* ====== CV Sections ====== */
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #eee;
+    }
+    header img {
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    main {
+      padding: 20px;
+      background: #fff;
+    }
+    section { margin-bottom: 40px; }
+    h2, h3 { color: #333; margin: 0 0 10px; }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #444;
+      color: #fff;
+    }
+
+    /* ====== Contact Form (giống ảnh) ====== */
+    .contact-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .contact-card {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 520px;
+    }
+    .contact-card h3 {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    .form-row { margin-bottom: 14px; }
+    .form-row label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+    .form-input,
+    .form-select,
+    .form-textarea,
+    .form-file {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    .inline-group { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .inline-group label { margin: 0; font-weight: 500; }
+
+    .note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    .btn-row {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      appearance: none;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #000;
+      color: #fff;
+      transition: background 0.2s ease;
+    }
+    .btn-primary:hover { background: #333; }
+    .btn-ghost {
+      background: #eee;
+      color: #222;
+    }
+
+    /* Responsive tweak */
+    @media (max-width: 560px) {
+      .contact-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="topmenu">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#hocvan">Học vấn</a></li>
+      <li><a href="#kinhnghiem">Kinh nghiệm</a></li>
+      <li><a href="#kynang">Kỹ năng</a></li>
+      <li><a href="#lienhe">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <!-- CV -->
+  <header id="home">
+    <h2>Đỗ Hải Anh</h2>
+    <img src="cat meme.jpg" alt="Ảnh đại diện" width="150">
+    <p>Email: 23071073@vnu.edu.vn | Điện thoại: 0333270048</p>
+  </header>
+
+  <main>
+    <section id="thongtin">
+      <h3>I. Thông tin cá nhân</h3>
+      <details>
+        <summary>Chi tiết</summary>
+        <ul>
+          <li>Ngày sinh: 23/09/2005</li>
+          <li>Địa chỉ: Hà Nội</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="hocvan">
+      <h3>II. Học vấn</h3>
+      <details>
+        <summary>Chi tiết</summary>
+        <ul>
+          <li>Trường Quốc Tế - ĐHQGHN (2023–nay)</li>
+          <li>Chứng chỉ:
+            <ul>
+              <li>Google Data Analytics</li>
+              <li>Tableau Public</li>
+            </ul>
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="kinhnghiem">
+      <h3>III. Kinh nghiệm làm việc</h3>
+      <details>
+        <summary>Chi tiết</summary>
+        <ul>
+          <li>Product Manager - Công ty XYZ
+            <ul>
+              <li>Quản lý roadmap sản phẩm</li>
+              <li>Phân tích KPI</li>
+            </ul>
+          </li>
+          <li>Data Analyst - Công ty ABC
+            <ul>
+              <li>Phân tích dữ liệu bán hàng</li>
+              <li>Tạo dashboard KPI</li>
+            </ul>
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="kynang">
+      <h3>IV. Kỹ năng</h3>
+      <details>
+        <summary>Chi tiết</summary>
+        <ul>
+          <li>SQL, Python</li>
+          <li>Excel, Tableau</li>
+          <li>Kỹ năng quản lý</li>
+        </ul>
+      </details>
+    </section>
+
+    <section>
+      <h3>V. Video</h3>
+      <p>Gu nhạc:</p>
+      <iframe width="560" height="315"
+              src="https://www.youtube.com/embed/CHw1b_1LVBA"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
+    </section>
+
+    <!-- ====== VI. Liên hệ (Contact Form) ====== -->
+    <section id="lienhe">
+      <h3>VI. Liên hệ</h3>
+      <div class="contact-wrap">
+        <form class="contact-card" action="#" method="post">
+          <h3>Contact us</h3>
+
+          <div class="form-row">
+            <label for="your_name">Full name *</label>
+            <input class="form-input" type="text" id="your_name" name="your_name" required placeholder="First and Last Name" />
+          </div>
+
+          <div class="form-row">
+            <label for="your_email">Email *</label>
+            <input class="form-input" type="email" id="your_email" name="your_email" required placeholder="your@email.com" />
+          </div>
+
+          <div class="form-row">
+            <label for="contact_phone">Phone Number *</label>
+            <input type="form-input" typr="contact_phone" id="contact_phone" name="contact_phone" required>
+          </div>
+          
+
+          <div class="form-row">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" class="form-select">
+              <option value="" selected>— Select a subject —</option>
+              <option value="job">Cơ hội việc làm</option>
+              <option value="collab">Hợp tác</option>
+              <option value="other">Khác</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>Preferred contact</label>
+            <div class="inline-group">
+              <label><input type="radio" name="preferred_contact" value="email"> Email</label>
+              <label><input type="radio" name="preferred_contact" value="phone"> Phone</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="file">Attach Files</label>
+            <input class="form-file" type="file" id="file" name="file" />
+            <div class="note">Attach up to 10 files. Maximum size per file is 20MB.</div>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Type your message here..."></textarea>
+          </div>
+
+          <div class="btn-row">
+            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="reset" class="btn btn-ghost">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Đỗ Hải Anh</p>
+  </footer>
+</body>
+</html>
