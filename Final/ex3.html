@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Grade Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 400px;
+      margin-bottom: 15px;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Alternating row colors */
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    button {
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Student Grade Calculator &reg;</h2>
+  <p>Passing rule &sect; Average &ge; 5.0</p>
+
+  <table>
+    <tr>
+      <th>Subject</th>
+      <th>Grade</th>
+    </tr>
+    <tr>
+      <td>Math</td>
+      <td class="grade">8</td>
+    </tr>
+    <tr>
+      <td>English</td>
+      <td class="grade">7</td>
+    </tr>
+    <tr>
+      <td>Physics</td>
+      <td class="grade">6</td>
+    </tr>
+    <tr>
+      <td>Computer Science</td>
+      <td class="grade">9</td>
+    </tr>
+  </table>
+
+  <button onclick="calculateAverage()">Calculate Average</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateAverage() {
+      const grades = document.querySelectorAll('.grade');
+      let total = 0;
+
+      grades.forEach(g => {
+        total += Number(g.textContent);
+      });
+
+      const average = total / grades.length;
+      document.getElementById('result').textContent = 'Average Grade: ' + average.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>

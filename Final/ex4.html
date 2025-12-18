@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 20px;
+      border-bottom: 2px solid #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      padding: 6px 0;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    button {
+      margin-bottom: 15px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Restaurant Menu</h1>
+
+  <button onclick="filterMenu()">Filter Menu (Vegetarian)</button>
+
+  <!-- Appetizers -->
+  <h2>Appetizers &reg;</h2>
+  <ul>
+    <li class="menu-item veg">Spring Rolls <span class="price">≥ $5</span></li>
+    <li class="menu-item">Chicken Wings <span class="price">≥ $7</span></li>
+  </ul>
+
+  <!-- Main Course -->
+  <h2>Main Course &sect;</h2>
+  <ul>
+    <li class="menu-item veg">Vegetable Curry <span class="price">≥ $12</span></li>
+    <li class="menu-item">Grilled Beef Steak <span class="price">≥ $18</span></li>
+  </ul>
+
+  <!-- Desserts -->
+  <h2>Desserts</h2>
+  <ul>
+    <li class="menu-item veg">Fruit Salad <span class="price">≥ $6</span></li>
+    <li class="menu-item">Chocolate Cake <span class="price">≥ $8</span></li>
+  </ul>
+
+  <!-- Drinks -->
+  <h2>Drinks</h2>
+  <ul>
+    <li class="menu-item veg">Fresh Orange Juice <span class="price">≥ $4</span></li>
+    <li class="menu-item">Iced Coffee <span class="price">≥ $3</span></li>
+  </ul>
+
+  <script>
+    let showVegetarianOnly = false;
+
+    function filterMenu() {
+      const items = document.getElementsByClassName('menu-item');
+      showVegetarianOnly = !showVegetarianOnly;
+
+      for (let i = 0; i < items.length; i++) {
+        if (showVegetarianOnly && !items[i].classList.contains('veg')) {
+          items[i].style.display = 'none';
+        } else {
+          items[i].style.display = 'list-item';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

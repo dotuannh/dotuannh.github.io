@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabbed Content Interface</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    /* Tabs container */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #333;
+      margin-bottom: 15px;
+    }
+
+    .tab {
+      padding: 10px 16px;
+      cursor: pointer;
+      border: 1px solid #333;
+      border-bottom: none;
+      background: #f0f0f0;
+      margin-right: 5px;
+    }
+
+    /* Inactive tab */
+    .tab.inactive {
+      background: #e0e0e0;
+      color: #555;
+    }
+
+    /* Active tab */
+    .tab.active {
+      background: #ffffff;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .arrow {
+      margin-left: 5px;
+    }
+
+    /* Content area */
+    .content {
+      border: 1px solid #333;
+      padding: 15px;
+      display: none;
+    }
+
+    .content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tabbed Content Interface</h2>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('features', this)">
+      Features &reg;<span class="arrow">→</span>
+    </div>
+    <div class="tab inactive" onclick="switchTab('pricing', this)">
+      Pricing €
+    </div>
+    <div class="tab inactive" onclick="switchTab('reviews', this)">
+      Reviews
+    </div>
+    <div class="tab inactive" onclick="switchTab('support', this)">
+      Support
+    </div>
+  </div>
+
+  <!-- Tab contents -->
+  <div id="features" class="content active">
+    <p>Our product includes fast performance, modern design, and high security.</p>
+  </div>
+
+  <div id="pricing" class="content">
+    <p>Pricing plans start from €9.99 per month with flexible options.</p>
+  </div>
+
+  <div id="reviews" class="content">
+    <p>Customers rate our service 4.8/5 based on thousands of reviews.</p>
+  </div>
+
+  <div id="support" class="content">
+    <p>24/7 customer support via email, chat, and phone.</p>
+  </div>
+
+  <script>
+    function switchTab(tabId, element) {
+      // Remove active classes from all tabs
+      const tabs = document.getElementsByClassName('tab');
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+        tabs[i].classList.add('inactive');
+        tabs[i].querySelector('.arrow')?.remove();
+      }
+
+      // Hide all contents
+      const contents = document.getElementsByClassName('content');
+      for (let i = 0; i < contents.length; i++) {
+        contents[i].classList.remove('active');
+      }
+
+      // Activate clicked tab
+      element.classList.remove('inactive');
+      element.classList.add('active');
+      element.innerHTML += '<span class="arrow">→</span>';
+
+      // Show corresponding content
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    form {
+      background: #fff;
+      width: 350px;
+      padding: 20px;
+      border: 1px solid #ccc; /* border */
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;       /* spacing */
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 80px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Contact Us</h2>
+
+  <form onsubmit="return validateForm()">
+    <!-- Name -->
+    <label for="name">Name</label>
+    <input type="text" id="name">
+
+    <!-- Email -->
+    <label for="email">Email</label>
+    <input type="email" id="email">
+
+    <!-- Message -->
+    <label for="message">Message</label>
+    <textarea id="message"></textarea>
+
+    <button type="submit">Submit</button>
+
+    <div id="result" class="message"></div>
+  </form>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const result = document.getElementById('result');
+
+      if (name === '' || email === '' || message === '') {
+        result.textContent = 'Please fill in all fields.';
+        result.className = 'message error';
+        return false;
+      }
+
+      result.textContent = 'Form submitted successfully!';
+      result.className = 'message success';
+      return false; // prevent real submission
+    }
+  </script>
+
+</body>
+</html>

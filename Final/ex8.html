@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Newsletter Subscription</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+
+    form {
+      background: #fff;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      display: grid;                 /* CSS Grid layout */
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    h2 {
+      grid-column: span 2;
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      grid-column: span 2;
+    }
+
+    .options {
+      grid-column: span 2;
+    }
+
+    button {
+      grid-column: span 2;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .message {
+      grid-column: span 2;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .error { color: red; }
+    .success { color: green; }
+  </style>
+</head>
+<body>
+
+  <form onsubmit="return validateForm()">
+    <h2>Newsletter Subscription</h2>
+
+    <!-- Full Name -->
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname">
+
+    <!-- Email -->
+    <label for="email">Email</label>
+    <input type="email" id="email">
+
+    <!-- Subscription Type -->
+    <div class="options">
+      <label>Subscription Type</label><br>
+      <input type="radio" name="sub" value="monthly"> Monthly
+      <input type="radio" name="sub" value="yearly"> Yearly
+    </div>
+
+    <!-- Interests -->
+    <div class="options">
+      <label>Interests</label><br>
+      <input type="checkbox" class="interest"> Technology<br>
+      <input type="checkbox" class="interest"> Business<br>
+      <input type="checkbox" class="interest"> Education
+    </div>
+
+    <button type="submit">Subscribe</button>
+
+    <div id="result" class="message"></div>
+  </form>
+
+  <script>
+    function validateForm() {
+      const email = document.getElementById('email').value.trim();
+      const interests = document.getElementsByClassName('interest');
+      const result = document.getElementById('result');
+
+      // Email validation
+      if (!email.includes('@') || !email.includes('.')) {
+        result.textContent = 'Please enter a valid email address.';
+        result.className = 'message error';
+        return false;
+      }
+
+      // Interest validation
+      let checked = false;
+      for (let i = 0; i < interests.length; i++) {
+        if (interests[i].checked) {
+          checked = true;
+          break;
+        }
+      }
+
+      if (!checked) {
+        result.textContent = 'Please select at least one interest.';
+        result.className = 'message error';
+        return false;
+      }
+
+      // Success
+      result.textContent = 'Subscription successful! Thank you.';
+      result.className = 'message success';
+      return false; // prevent real submit
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Showcase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f6f8;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    /* Grid layout */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* Product card */
+    .card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* box shadow */
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Hover effect */
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .price {
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    button {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Product Showcase &reg;</h2>
+
+  <div class="products">
+    <div class="card">
+      <h3>Smartphone</h3>
+      <div class="price">Price: €699</div>
+      <p>High-performance smartphone → fast and reliable.</p>
+    </div>
+
+    <div class="card">
+      <h3>Laptop</h3>
+      <div class="price">Price: €999</div>
+      <p>Lightweight laptop → perfect for work and study.</p>
+    </div>
+
+    <div class="card">
+      <h3>Headphones</h3>
+      <div class="price">Price: €199</div>
+      <p>Noise-canceling headphones → immersive sound.</p>
+    </div>
+
+    <div class="card">
+      <h3>Smart Watch</h3>
+      <div class="price">Price: €249</div>
+      <p>Modern smart watch → track your daily activity.</p>
+    </div>
+  </div>
+
+  <button onclick="togglePrice()">Toggle Price</button>
+
+  <script>
+    function togglePrice() {
+      const prices = document.getElementsByClassName('price');
+
+      for (let i = 0; i < prices.length; i++) {
+        if (prices[i].style.display === 'none') {
+          prices[i].style.display = 'block';
+        } else {
+          prices[i].style.display = 'none';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 10px;
+      width: 350px;
+      display: flex;               /* Flexbox layout */
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      display: none;
+    }
+
+    .strength {
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .weak { color: red; }
+    .medium { color: orange; }
+    .strong { color: green; }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<form id="registerForm">
+  <h2>Register</h2>
+
+  <!-- Username -->
+  <div>
+    <label for="username">Username</label>
+    <input type="text" id="username" />
+    <div class="error" id="userError">Username must be 5–15 characters</div>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" />
+    <div class="strength" id="strengthText">Strength: </div>
+    <div class="error" id="passError">Password must contain letters and numbers</div>
+  </div>
+
+  <!-- Profile Picture -->
+  <div>
+    <label for="image">Profile Picture</label>
+    <input type="file" id="image" accept="image/png, image/jpeg" />
+    <div class="error" id="imgError">Only JPG or PNG allowed</div>
+  </div>
+
+  <button type="submit">Register</button>
+</form>
+
+<script>
+  const username = document.getElementById('username');
+  const password = document.getElementById('password');
+  const image = document.getElementById('image');
+
+  const userError = document.getElementById('userError');
+  const passError = document.getElementById('passError');
+  const imgError = document.getElementById('imgError');
+  const strengthText = document.getElementById('strengthText');
+
+  // Password strength indicator (real-time)
+  password.addEventListener('input', () => {
+    const value = password.value;
+
+    let strength = 'Weak';
+    strengthText.className = 'strength weak';
+
+    const hasLetters = /[a-zA-Z]/.test(value);
+    const hasNumbers = /[0-9]/.test(value);
+
+    if (value.length >= 8 && hasLetters && hasNumbers) {
+      strength = 'Strong';
+      strengthText.className = 'strength strong';
+    } else if (value.length >= 6 && hasLetters && hasNumbers) {
+      strength = 'Medium';
+      strengthText.className = 'strength medium';
+    }
+
+    strengthText.textContent = 'Strength: ' + strength;
+  });
+
+  // Form validation
+  document.getElementById('registerForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let valid = true;
+
+    // Username validation
+    if (username.value.length < 5 || username.value.length > 15) {
+      userError.style.display = 'block';
+      valid = false;
+    } else {
+      userError.style.display = 'none';
+    }
+
+    // Password validation
+    const hasLetters = /[a-zA-Z]/.test(password.value);
+    const hasNumbers = /[0-9]/.test(password.value);
+
+    if (!hasLetters || !hasNumbers) {
+      passError.style.display = 'block';
+      valid = false;
+    } else {
+      passError.style.display = 'none';
+    }
+
+    // Image validation
+    if (image.files.length > 0) {
+      const fileType = image.files[0].type;
+      if (fileType !== 'image/jpeg' && fileType !== 'image/png') {
+        imgError.style.display = 'block';
+        valid = false;
+      } else { imgError.style.display = 'none';
+    }
+    }
+
+    if (valid) {alert('Registration successful!');
+    }
+  });
+</script>
+
+</body>
+</html>

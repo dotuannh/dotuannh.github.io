@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computer Parts Price List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 400px;
+    }
+
+    table, th, td {
+      border: 1px solid #000; /* table borders */
+    }
+
+    th, td {
+      padding: 10px; /* padding */
+      text-align: left;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Computer Parts Price List &copy; TechStore&trade;</h2>
+
+  <p>Available items &bull; Updated 2025</p>
+
+  <table id="priceTable">
+    <tr>
+      <th>Computer Part</th>
+      <th>Price (USD)</th>
+    </tr>
+    <tr>
+      <td>CPU</td>
+      <td>$250</td>
+    </tr>
+    <tr>
+      <td>RAM</td>
+      <td>$120</td>
+    </tr>
+    <tr>
+      <td>SSD</td>
+      <td>$180</td>
+    </tr>
+    <tr>
+      <td>Graphics Card</td>
+      <td>$450</td>
+    </tr>
+  </table>
+
+  <button onclick="changeColor()">Change Color</button>
+
+  <script>
+    function changeColor() {
+      // get table by ID and change text color to red
+      document.getElementById("priceTable").style.color = "red";
+    }
+  </script>
+
+</body>
+</html>
