@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - Cute Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span>🌸</span> Cute Shop
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="products.html?category=sticker">Sticker</a></li>
+                <li><a href="products.html?category=keychain">Keychain</a></li>
+            </ul>
+            <a href="cart.html" class="cart-icon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Page Title -->
+    <section class="hero" style="padding: 2rem;">
+        <h1>🛍️ Tất Cả Sản Phẩm</h1>
+        <p>Khám phá bộ sưu tập Sticker & Keychain đa dạng của chúng tôi!</p>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container">
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterProducts('all')">Tất Cả</button>
+            <button class="tab-btn" onclick="filterProducts('sticker')">🏷️ Sticker</button>
+            <button class="tab-btn" onclick="filterProducts('keychain')">🔑 Keychain</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Stickers -->
+            <div class="product-card" data-category="sticker" data-id="1">
+                <span class="product-badge">Hot</span>
+                <div class="product-image">🐱</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Mèo Kawaii</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">25.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(1, 'Sticker Mèo Kawaii', 25000, '🐱')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sticker" data-id="2">
+                <div class="product-image">🌸</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Hoa Anh Đào</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">20.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(2, 'Sticker Hoa Anh Đào', 20000, '🌸')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sticker" data-id="3">
+                <span class="product-badge sale">-20%</span>
+                <div class="product-image">🦊</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Cáo Dễ Thương</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">18.000₫ <span class="old-price">22.000₫</span></p>
+                    <button class="add-to-cart" onclick="addToCart(3, 'Sticker Cáo Dễ Thương', 18000, '🦊')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sticker" data-id="4">
+                <div class="product-image">🍓</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Trái Cây</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">15.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(4, 'Sticker Trái Cây', 15000, '🍓')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sticker" data-id="9">
+                <div class="product-image">🐼</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Gấu Trúc</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">22.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(9, 'Sticker Gấu Trúc', 22000, '🐼')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sticker" data-id="10">
+                <span class="product-badge">New</span>
+                <div class="product-image">🦋</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Bướm Xinh</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">19.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(10, 'Sticker Bướm Xinh', 19000, '🦋')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sticker" data-id="11">
+                <div class="product-image">🌈</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Cầu Vồng</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">16.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(11, 'Sticker Cầu Vồng', 16000, '🌈')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="sticker" data-id="12">
+                <span class="product-badge sale">-25%</span>
+                <div class="product-image">🍰</div>
+                <div class="product-info">
+                    <h3 class="product-name">Sticker Bánh Ngọt</h3>
+                    <p class="product-category">Sticker</p>
+                    <p class="product-price">15.000₫ <span class="old-price">20.000₫</span></p>
+                    <button class="add-to-cart" onclick="addToCart(12, 'Sticker Bánh Ngọt', 15000, '🍰')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <!-- Keychains -->
+            <div class="product-card" data-category="keychain" data-id="5">
+                <span class="product-badge">Best Seller</span>
+                <div class="product-image">🐰</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Thỏ Bông</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">45.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(5, 'Keychain Thỏ Bông', 45000, '🐰')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="6">
+                <div class="product-image">⭐</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Ngôi Sao</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">35.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(6, 'Keychain Ngôi Sao', 35000, '⭐')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="7">
+                <span class="product-badge sale">-15%</span>
+                <div class="product-image">🌙</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Mặt Trăng</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">38.000₫ <span class="old-price">45.000₫</span></p>
+                    <button class="add-to-cart" onclick="addToCart(7, 'Keychain Mặt Trăng', 38000, '🌙')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="8">
+                <div class="product-image">🎀</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Nơ Hồng</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">40.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(8, 'Keychain Nơ Hồng', 40000, '🎀')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="13">
+                <span class="product-badge">New</span>
+                <div class="product-image">🌻</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Hoa Hướng Dương</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">42.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(13, 'Keychain Hoa Hướng Dương', 42000, '🌻')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="14">
+                <div class="product-image">🍀</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Cỏ 4 Lá</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">38.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(14, 'Keychain Cỏ 4 Lá', 38000, '🍀')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="15">
+                <span class="product-badge sale">-10%</span>
+                <div class="product-image">💎</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Kim Cương</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">50.000₫ <span class="old-price">55.000₫</span></p>
+                    <button class="add-to-cart" onclick="addToCart(15, 'Keychain Kim Cương', 50000, '💎')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="16">
+                <div class="product-image">🎵</div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain Nốt Nhạc</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">36.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(16, 'Keychain Nốt Nhạc', 36000, '🎵')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🌸 Cute Shop</h3>
+                <p>Shop chuyên cung cấp Sticker và Keychain dễ thương, chất lượng cao.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Kết</h3>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <ul>
+                    <li>📧 contact@cuteshop.vn</li>
+                    <li>📞 0123 456 789</li>
+                    <li>📍 Hà Nội, Việt Nam</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Theo Dõi</h3>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Cute Shop. Made with 💖</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Check URL for category filter
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category) {
+                filterProducts(category);
+                // Update active tab
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.textContent.toLowerCase().includes(category)) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

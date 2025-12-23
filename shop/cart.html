@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng - Cute Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span>🌸</span> Cute Shop
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="products.html?category=sticker">Sticker</a></li>
+                <li><a href="products.html?category=keychain">Keychain</a></li>
+            </ul>
+            <a href="cart.html" class="cart-icon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="cart-container">
+        <div class="section-title">
+            <h2>🛒 Giỏ Hàng Của Bạn</h2>
+        </div>
+
+        <!-- Empty Cart -->
+        <div class="cart-empty" id="cartEmpty" style="display: none;">
+            <div class="cart-empty-icon">🛒</div>
+            <h3>Giỏ hàng trống!</h3>
+            <p style="margin: 1rem 0; color: #666;">Hãy thêm sản phẩm yêu thích vào giỏ hàng nhé!</p>
+            <a href="products.html" class="btn">Mua Sắm Ngay 🛍️</a>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be rendered here by JavaScript -->
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+            <div class="summary-row">
+                <span>Tạm tính:</span>
+                <span id="subtotal">0₫</span>
+            </div>
+            <div class="summary-row">
+                <span>Phí vận chuyển:</span>
+                <span id="shipping">0₫</span>
+            </div>
+            <div class="summary-row">
+                <span>Giảm giá:</span>
+                <span id="discount">0₫</span>
+            </div>
+            <div class="summary-row total">
+                <span>Tổng cộng:</span>
+                <span id="total">0₫</span>
+            </div>
+            <button class="btn checkout-btn" onclick="checkout()">
+                Thanh Toán 💳
+            </button>
+            <p style="text-align: center; margin-top: 1rem; color: #888; font-size: 0.9rem;">
+                🚚 Miễn phí ship cho đơn từ 200.000₫
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🌸 Cute Shop</h3>
+                <p>Shop chuyên cung cấp Sticker và Keychain dễ thương, chất lượng cao.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Kết</h3>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <ul>
+                    <li>📧 contact@cuteshop.vn</li>
+                    <li>📞 0123 456 789</li>
+                    <li>📍 Hà Nội, Việt Nam</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Theo Dõi</h3>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Cute Shop. Made with 💖</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Render cart on page load
+        document.addEventListener('DOMContentLoaded', renderCart);
+
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cartItems');
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartSummary = document.getElementById('cartSummary');
+
+            if (cart.length === 0) {
+                cartItems.style.display = 'none';
+                cartEmpty.style.display = 'block';
+                cartSummary.style.display = 'none';
+                return;
+            }
+
+            cartItems.style.display = 'block';
+            cartEmpty.style.display = 'none';
+            cartSummary.style.display = 'block';
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item" data-id="${item.id}">
+                    <div class="cart-item-image">${item.icon}</div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">${item.name}</h4>
+                        <p class="cart-item-price">${formatPrice(item.price)}</p>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <span class="qty-value">${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    </div>
+                    <div class="cart-item-total">${formatPrice(item.price * item.quantity)}</div>
+                    <button class="remove-item" onclick="removeFromCart(${item.id})">🗑️</button>
+                </div>
+            `).join('');
+
+            updateSummary();
+        }
+
+        function updateQuantity(id, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(item => item.id === id);
+            
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== id);
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+                updateCartCount();
+            }
+        }
+
+        function removeFromCart(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+            showToast('Đã xóa sản phẩm khỏi giỏ hàng! 🗑️');
+        }
+
+        function updateSummary() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 200000 ? 0 : 30000;
+            const discount = 0;
+            const total = subtotal + shipping - discount;
+
+            document.getElementById('subtotal').textContent = formatPrice(subtotal);
+            document.getElementById('shipping').textContent = shipping === 0 ? 'Miễn phí 🎉' : formatPrice(shipping);
+            document.getElementById('discount').textContent = formatPrice(discount);
+            document.getElementById('total').textContent = formatPrice(total);
+        }
+
+        function checkout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Giỏ hàng trống!');
+                return;
+            }
+            
+            alert('🎉 Cảm ơn bạn đã đặt hàng!\n\nĐơn hàng của bạn đang được xử lý.\nChúng tôi sẽ liên hệ sớm nhất!');
+            localStorage.removeItem('cart');
+            renderCart();
+            updateCartCount();
+        }
+    </script>
+</body>
+</html>
