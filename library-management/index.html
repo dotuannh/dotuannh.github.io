@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Thư viện</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-book-open"></i>
+                <h2>Hệ thống Quản lý Thư viện</h2>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" id="login-username" required placeholder="Nhập tên đăng nhập">
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="login-password" required placeholder="Nhập mật khẩu">
+                </div>
+                <div class="form-group">
+                    <label>Vai trò</label>
+                    <select id="login-role" required>
+                        <option value="">Chọn vai trò</option>
+                        <option value="user">Người mượn sách</option>
+                        <option value="librarian">Thủ thư (Admin)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+            </form>
+            <div class="login-divider">
+                <span>hoặc đăng nhập nhanh</span>
+            </div>
+            <div class="quick-login-buttons">
+                <button type="button" class="btn btn-quick-user" id="quick-login-user">
+                    <i class="fas fa-user"></i> Người mượn sách
+                </button>
+                <button type="button" class="btn btn-quick-admin" id="quick-login-admin">
+                    <i class="fas fa-user-shield"></i> Thủ thư
+                </button>
+            </div>
+            <div class="login-demo">
+                <p><strong>Tài khoản demo:</strong></p>
+                <p>👤 Người mượn: <code>user / user123</code></p>
+                <p>👨‍💼 Thủ thư: <code>admin / admin123</code></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" style="display: none;">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-book-open"></i>
+            <h2>Thư viện</h2>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <!-- Navigation will be populated based on user role -->
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn btn-logout" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Đăng xuất</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 id="page-title">Tổng quan</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="global-search" placeholder="Tìm kiếm...">
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="user-name">User</span>
+                    <span class="user-role" id="user-role-badge"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-books">0</h3>
+                        <p>Tổng số sách</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-members">0</h3>
+                        <p>Thành viên</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="borrowed-books">0</h3>
+                        <p>Đang mượn</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="available-books">0</h3>
+                        <p>Sách khả dụng</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="recent-activities">
+                    <h3>Hoạt động gần đây</h3>
+                    <div id="recent-activities-list" class="activity-list">
+                        <!-- Activities will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Books Catalog (For Users) -->
+        <div id="catalog-page" class="page">
+            <div class="books-grid" id="books-catalog">
+                <!-- Books catalog will be rendered here -->
+            </div>
+        </div>
+
+        <!-- My Borrowings (For Users) -->
+        <div id="my-borrowings-page" class="page">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Sách</th>
+                            <th>Tác giả</th>
+                            <th>Ngày mượn</th>
+                            <th>Ngày trả dự kiến</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="my-borrowings-table-body">
+                        <!-- User's borrowings will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Books Page -->
+        <div id="books-page" class="page">
+            <div class="page-header">
+                <button class="btn btn-primary" id="add-book-btn">
+                    <i class="fas fa-plus"></i> Thêm sách mới
+                </button>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên sách</th>
+                            <th>Tác giả</th>
+                            <th>Thể loại</th>
+                            <th>ISBN</th>
+                            <th>Số lượng</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="books-table-body">
+                        <!-- Books will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Members Page -->
+        <div id="members-page" class="page">
+            <div class="page-header">
+                <button class="btn btn-primary" id="add-member-btn">
+                    <i class="fas fa-plus"></i> Thêm thành viên
+                </button>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày đăng ký</th>
+                            <th>Sách đang mượn</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="members-table-body">
+                        <!-- Members will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Borrowing Page -->
+        <div id="borrowing-page" class="page">
+            <div class="borrowing-form-container">
+                <div class="form-card">
+                    <h3>Mượn sách</h3>
+                    <form id="borrow-form">
+                        <div class="form-group">
+                            <label>Thành viên</label>
+                            <select id="borrow-member" required>
+                                <option value="">Chọn thành viên</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Sách</label>
+                            <select id="borrow-book" required>
+                                <option value="">Chọn sách</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Ngày trả dự kiến</label>
+                            <input type="date" id="return-date" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check"></i> Xác nhận mượn
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="current-borrowings">
+                <h3>Sách đang mượn</h3>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Thành viên</th>
+                                <th>Sách</th>
+                                <th>Ngày mượn</th>
+                                <th>Ngày trả dự kiến</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="borrowings-table-body">
+                            <!-- Borrowings will be added dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Page -->
+        <div id="history-page" class="page">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Thành viên</th>
+                            <th>Sách</th>
+                            <th>Ngày mượn</th>
+                            <th>Ngày trả</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                        <!-- History will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Book -->
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="book-modal-title">Thêm sách mới</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="book-form">
+                <input type="hidden" id="book-id">
+                <div class="form-group">
+                    <label>Tên sách *</label>
+                    <input type="text" id="book-title" required>
+                </div>
+                <div class="form-group">
+                    <label>Tác giả *</label>
+                    <input type="text" id="book-author" required>
+                </div>
+                <div class="form-group">
+                    <label>Thể loại *</label>
+                    <input type="text" id="book-category" required>
+                </div>
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input type="text" id="book-isbn">
+                </div>
+                <div class="form-group">
+                    <label>Số lượng *</label>
+                    <input type="number" id="book-quantity" min="1" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Member -->
+    <div id="member-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="member-modal-title">Thêm thành viên</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="member-form">
+                <input type="hidden" id="member-id">
+                <div class="form-group">
+                    <label>Họ tên *</label>
+                    <input type="text" id="member-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="member-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại *</label>
+                    <input type="tel" id="member-phone" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary cancel-btn">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </div>
+    <!-- End Main App -->
+
+    <script src="script.js"></script>
+</body>
+</html>

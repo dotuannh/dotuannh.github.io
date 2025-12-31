@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 });
 
+// Navigate to product detail page
+function goToProductDetail(productId) {
+    window.location.href = `product-detail.html?id=${productId}`;
+}
+
 // ==========================================
 // CART FUNCTIONS
 // ==========================================

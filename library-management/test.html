@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Test Login System</h1>
+    
+    <div class="info">
+        <h3>Debug Information:</h3>
+        <p id="status">Loading...</p>
+    </div>
+
+    <h3>Quick Login Test:</h3>
+    <button onclick="testUserLogin()">Test User Login</button>
+    <button onclick="testAdminLogin()">Test Admin Login</button>
+    <button onclick="clearStorage()">Clear Storage</button>
+    <button onclick="checkStorage()">Check Storage</button>
+
+    <div class="info">
+        <h3>Console Log:</h3>
+        <pre id="log"></pre>
+    </div>
+
+    <script>
+        function log(message) {
+            const logElement = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logElement.textContent += `[${timestamp}] ${message}\n`;
+            console.log(message);
+        }
+
+        function testUserLogin() {
+            log('Testing user login...');
+            const user = { 
+                username: 'user', 
+                password: 'user123', 
+                role: 'user', 
+                name: 'Nguyễn Văn A', 
+                id: 1 
+            };
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            log('User saved to localStorage');
+            log('Redirecting to main page...');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+
+        function testAdminLogin() {
+            log('Testing admin login...');
+            const admin = { 
+                username: 'admin', 
+                password: 'admin123', 
+                role: 'librarian', 
+                name: 'Thủ thư Admin', 
+                id: 0 
+            };
+            localStorage.setItem('currentUser', JSON.stringify(admin));
+            log('Admin saved to localStorage');
+            log('Redirecting to main page...');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+
+        function clearStorage() {
+            log('Clearing localStorage...');
+            localStorage.removeItem('currentUser');
+            log('Storage cleared');
+            checkStorage();
+        }
+
+        function checkStorage() {
+            const saved = localStorage.getItem('currentUser');
+            if (saved) {
+                log('Found user in storage: ' + saved);
+            } else {
+                log('No user in storage');
+            }
+        }
+
+        // Initialize
+        document.getElementById('status').textContent = 'Ready to test';
+        log('Test page loaded');
+        checkStorage();
+    </script>
+</body>
+</html>

@@ -11,13 +11,12 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <span>🌸</span> Sao Béo
+                <span>⭐</span> Sao Béo
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Trang Chủ</a></li>
                 <li><a href="products.html">Sản Phẩm</a></li>
-                <li><a href="products.html?category=sticker">Sticker</a></li>
-                <li><a href="products.html?category=keychain">Keychain</a></li>
+                <li><a href="products.html">Mua Sắm Ngay</a></li>
             </ul>
             <a href="cart.html" class="cart-icon">
                 🛒
@@ -28,9 +27,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>✨ Chào mừng đến Cute Shop ✨</h1>
-        <p>Khám phá bộ sưu tập Sticker & Keychain siêu dễ thương!</p>
-        <a href="products.html" class="btn">Mua Sắm Ngay 🛍️</a>
     </section>
 
     <!-- Features -->
@@ -73,102 +69,150 @@
 
         <div class="products-grid" id="productsGrid">
             <!-- Stickers -->
-            <div class="product-card" data-category="sticker" data-id="1">
+            <div class="product-card" data-category="sticker" data-id="1" onclick="goToProductDetail(1)">
                 <span class="product-badge">Hot</span>
-                <div class="product-image">🐱</div>
+                <div class="product-image"><img src="./1.png" alt="Sticker 1"></div>
                 <div class="product-info">
                     <h3 class="product-name">Sticker Mèo Kawaii</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">25.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(1, 'Sticker Mèo Kawaii', 25000, '🐱')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(1, 'Sticker Mèo Kawaii', 25000, './1.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="sticker" data-id="2">
-                <div class="product-image">🌸</div>
+            <div class="product-card" data-category="sticker" data-id="2" onclick="goToProductDetail(2)">
+                <div class="product-image"><img src="./2.png" alt="Sticker 2"></div>
                 <div class="product-info">
                     <h3 class="product-name">Sticker Hoa Anh Đào</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">20.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(2, 'Sticker Hoa Anh Đào', 20000, '🌸')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(2, 'Sticker Hoa Anh Đào', 20000, './2.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="sticker" data-id="3">
+            <div class="product-card" data-category="sticker" data-id="3" onclick="goToProductDetail(3)">
                 <span class="product-badge sale">-20%</span>
-                <div class="product-image">🦊</div>
+                <div class="product-image"><img src="./3.png" alt="Sticker 3"></div>
                 <div class="product-info">
                     <h3 class="product-name">Sticker Cáo Dễ Thương</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">18.000₫ <span class="old-price">22.000₫</span></p>
-                    <button class="add-to-cart" onclick="addToCart(3, 'Sticker Cáo Dễ Thương', 18000, '🦊')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(3, 'Sticker Cáo Dễ Thương', 18000, './3.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="sticker" data-id="4">
-                <div class="product-image">🍓</div>
+            <div class="product-card" data-category="sticker" data-id="4" onclick="goToProductDetail(4)">
+                <div class="product-image"><img src="./4.png" alt="Sticker 4"></div>
                 <div class="product-info">
                     <h3 class="product-name">Sticker Trái Cây</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">15.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(4, 'Sticker Trái Cây', 15000, '🍓')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(4, 'Sticker Trái Cây', 15000, './4.png')"></button>
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <!-- Keychains -->
-            <div class="product-card" data-category="keychain" data-id="5">
+            <div class="product-card" data-category="sticker" data-id="5" onclick="goToProductDetail(5)">
                 <span class="product-badge">Best Seller</span>
-                <div class="product-image">🐰</div>
+                <div class="product-image"><img src="./5.png" alt="Sticker 5"></div>
                 <div class="product-info">
                     <h3 class="product-name">Keychain Thỏ Bông</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">45.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(5, 'Keychain Thỏ Bông', 45000, '🐰')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(5, 'Sticker 5', 45000, './5.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="keychain" data-id="6">
-                <div class="product-image">⭐</div>
+            <div class="product-card" data-category="sticker" data-id="6" onclick="goToProductDetail(6)">
+                <div class="product-image"><img src="./6.png" alt="Sticker 6"></div>
                 <div class="product-info">
                     <h3 class="product-name">Keychain Ngôi Sao</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">35.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(6, 'Keychain Ngôi Sao', 35000, '⭐')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(6, 'Sticker 6', 35000, './6.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="keychain" data-id="7">
+            <div class="product-card" data-category="keychain" data-id="7" onclick="goToProductDetail(7)">
                 <span class="product-badge sale">-15%</span>
-                <div class="product-image">🌙</div>
+                <div class="product-image"><img src="./7.png" alt="Keychain 7"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Mặt Trăng</h3>
+                    <h3 class="product-name">Keychain 7</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">38.000₫ <span class="old-price">45.000₫</span></p>
-                    <button class="add-to-cart" onclick="addToCart(7, 'Keychain Mặt Trăng', 38000, '🌙')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(7, 'Keychain 7', 38000, './7.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="keychain" data-id="8">
-                <div class="product-image">🎀</div>
+            <div class="product-card" data-category="keychain" data-id="8" onclick="goToProductDetail(8)">
+                <div class="product-image"><img src="./8.png" alt="Keychain 8"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Nơ Hồng</h3>
+                    <h3 class="product-name">Keychain 8</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">40.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(8, 'Keychain Nơ Hồng', 40000, '🎀')">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(8, 'Keychain 8', 40000, './8.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="9" onclick="goToProductDetail(9)">
+                <div class="product-image"><img src="./9.png" alt="Keychain 9"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain 9</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">40.000₫</p>
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(9, 'Keychain 9', 40000, './9.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="10" onclick="goToProductDetail(10)">
+                <div class="product-image"><img src="./10.png" alt="Keychain 10"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain 10</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">40.000₫</p>
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(10, 'Keychain 10', 40000, './10.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="11" onclick="goToProductDetail(11)">
+                <div class="product-image"><img src="./11.png" alt="Keychain 11"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain 11</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">40.000₫</p>
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(11, 'Keychain 11', 40000, './11.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="keychain" data-id="12" onclick="goToProductDetail(12)">
+                <div class="product-image"><img src="./12.png" alt="Keychain 12"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Keychain 12</h3>
+                    <p class="product-category">Keychain</p>
+                    <p class="product-price">40.000₫</p>
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(12, 'Keychain 12', 40000, './12.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>

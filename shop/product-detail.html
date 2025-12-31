@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - Sao Béo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detail-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .detail-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d0f0ff, #eff9fa);
+            border-radius: 20px;
+            min-height: 400px;
+        }
+
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 2rem;
+        }
+
+        .detail-info h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .detail-price {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .detail-section {
+            margin-bottom: 2rem;
+        }
+
+        .detail-section h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-section p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .detail-section li {
+            color: #333;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .detail-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .detail-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-add {
+            flex: 1;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-add:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-back {
+            flex: 1;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-back:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .detail-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span>⭐</span> Sao Béo
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="products.html">Mua Sắm Ngay</a></li>
+            </ul>
+            <a href="cart.html" class="cart-icon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Product Detail -->
+    <div class="detail-container">
+        <div class="detail-image">
+            <img id="productImage" src="" alt="Sản phẩm">
+        </div>
+        <div class="detail-info">
+            <h1 id="productName">Sản Phẩm</h1>
+            <div class="detail-price" id="productPrice">0₫</div>
+            
+            <div class="detail-section">
+                <h3>Giới Thiệu Sản Phẩm</h3>
+                <p id="productIntro"></p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Thông Số Kỹ Thuật</h3>
+                <ul id="productSpecs"></ul>
+            </div>
+
+            <div class="detail-section">
+                <h3>Lưu Ý Khi Sử Dụng</h3>
+                <ul id="productNotes"></ul>
+            </div>
+
+            <div class="detail-buttons">
+                <button class="btn-add" id="addCartBtn">Thêm vào giỏ 🛒</button>
+                <a href="products.html" class="btn-back">← Quay Lại</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về Sao Béo</h3>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Chính Sách</h3>
+                <ul>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Chính sách hoàn trả</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kết Nối</h3>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">i</a>
+                    <a href="#">t</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sao Béo - Cute Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Product Database
+        const products = {
+            1: {
+                name: "🌟 MÓC KHÓA SAO BÉO 🌟",
+                price: 25000,
+                image: "./1.png",
+                intro: "Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những 'lời nhắc nhở nhỏ bé' đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại,.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước,",
+                    "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút,",
+                    "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau"
+                ]
+            },
+            2: {
+                name: "� MÓC KHÓA SAO BÉO 🌟",
+                price: 20000,
+                image: "./2.png",
+                intro: "Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những 'lời nhắc nhở nhỏ bé' đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại,.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước,",
+                    "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút,",
+                    "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau"
+                ]
+            },
+            3: {
+                name: "🌟 MÓC KHÓA SAO BÉO 🌟",
+                price: 18000,
+                image: "./3.png",
+                intro: "Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những 'lời nhắc nhở nhỏ bé' đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại,.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước,",
+                    "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút,",
+                    "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau"
+                ]
+            },
+            4: {
+                name: "� MÓC KHÓA SAO BÉO 🌟",
+                price: 15000,
+                image: "./4.png",
+                intro: "Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những 'lời nhắc nhở nhỏ bé' đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại,.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước,",
+                    "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút,",
+                    "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau"
+                ]
+            },
+            5: {
+                name: "🌟 MÓC KHÓA SAO BÉO 🌟",
+                price: 45000,
+                image: "./5.png",
+                intro: "Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những 'lời nhắc nhở nhỏ bé' đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại,.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước,",
+                    "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút,",
+                    "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau"
+                ]
+            },
+            6: {
+                name: "🌟 MÓC KHÓA SAO BÉO 🌟",
+                price: 35000,
+                image: "./6.png",
+                intro: "Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những 'lời nhắc nhở nhỏ bé' đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại,.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước,",
+                    "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút,",
+                    "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau"
+                ]
+            },
+            7: {
+                name: "🌟 MÓC KHÓA SAO BÉO 🌟",
+                price: 38000,
+                image: "./7.png",
+                intro: "Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những 'lời nhắc nhở nhỏ bé' đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước",
+                    "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút",
+                    "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau"
+                ]
+            },
+            8: {
+                name: "Keychain 8",
+                price: 40000,
+                image: "./8.png",
+                intro: "Móc khóa với thiết kế độc đáo và dây bền chắc.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp cao cấp",
+                    "Kích thước: 7cm",
+                    "Chống nước: Có",
+                    "Bền màu: Lâu dài"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ trước khi sử dụng",
+                    "Giữ nơi khô ráo"
+                ]
+            },
+            9: {
+                name: "Keychain 9",
+                price: 40000,
+                image: "./9.png",
+                intro: "Móc khóa độc đáo với thiết kế hiện đại.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp cao cấp",
+                    "Kích thước: 7cm",
+                    "Chống nước: Có",
+                    "Bền màu: Lâu dài"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ trước khi sử dụng",
+                    "Giữ nơi khô ráo"
+                ]
+            },
+            10: {
+                name: "Keychain 10",
+                price: 40000,
+                image: "./10.png",
+                intro: "Móc khóa với thiết kế độc đáo và đẹp mắt.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp cao cấp",
+                    "Kích thước: 7cm",
+                    "Chống nước: Có",
+                    "Bền màu: Lâu dài"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ trước khi sử dụng",
+                    "Giữ nơi khô ráo"
+                ]
+            },
+            11: {
+                name: "Keychain 11",
+                price: 40000,
+                image: "./11.png",
+                intro: "Móc khóa với thiết kế hiện đại và chất liệu cao cấp.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp cao cấp",
+                    "Kích thước: 7cm",
+                    "Chống nước: Có",
+                    "Bền màu: Lâu dài"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ trước khi sử dụng",
+                    "Giữ nơi khô ráo"
+                ]
+            },
+            12: {
+                name: "Keychain 12",
+                price: 40000,
+                image: "./12.png",
+                intro: "Móc khóa độc đáo với thiết kế tuyệt vời.",
+                specs: [
+                    "Chất liệu: Nhựa Acrylic 2 lớp cao cấp",
+                    "Kích thước: 7cm",
+                    "Chống nước: Có",
+                    "Bền màu: Lâu dài"
+                ],
+                notes: [
+                    "Bóc lớp màng bảo vệ trước khi sử dụng",
+                    "Giữ nơi khô ráo"
+                ]
+            }
+        };
+
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id')) || 1;
+        const product = products[productId];
+
+        // Display product details
+        if (product) {
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productPrice').textContent = product.price.toLocaleString('vi-VN') + '₫';
+            document.getElementById('productImage').src = product.image;
+            document.getElementById('productIntro').textContent = product.intro;
+
+            // Display specs
+            const specsHtml = product.specs.map(spec => `<li>${spec}</li>`).join('');
+            document.getElementById('productSpecs').innerHTML = specsHtml;
+
+            // Display notes
+            const notesHtml = product.notes.map(note => `<li>${note}</li>`).join('');
+            document.getElementById('productNotes').innerHTML = notesHtml;
+
+            // Add to cart button
+            document.getElementById('addCartBtn').onclick = () => {
+                addToCart(productId, product.name, product.price, product.image);
+            };
+        }
+    </script>
+</body>
+</html>
