@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ thống Quản lý Thư viện</title>
+    <title>Library Management System - Librarian</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
     <!-- Login Page -->
@@ -13,362 +14,953 @@
         <div class="login-card">
             <div class="login-header">
                 <i class="fas fa-book-open"></i>
-                <h2>Hệ thống Quản lý Thư viện</h2>
+                <h2>Library Management System</h2>
             </div>
             <form id="login-form">
                 <div class="form-group">
-                    <label>Tên đăng nhập</label>
-                    <input type="text" id="login-username" required placeholder="Nhập tên đăng nhập">
+                    <label>Username</label>
+                    <input type="text" id="login-username" required placeholder="Enter username">
                 </div>
                 <div class="form-group">
-                    <label>Mật khẩu</label>
-                    <input type="password" id="login-password" required placeholder="Nhập mật khẩu">
+                    <label>Password</label>
+                    <input type="password" id="login-password" required placeholder="Enter password">
                 </div>
                 <div class="form-group">
-                    <label>Vai trò</label>
+                    <label>Role</label>
                     <select id="login-role" required>
-                        <option value="">Chọn vai trò</option>
-                        <option value="user">Người mượn sách</option>
-                        <option value="librarian">Thủ thư (Admin)</option>
+                        <option value="">Select Role</option>
+                        <option value="member">Member</option>
+                        <option value="librarian">Librarian</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
             <div class="login-divider">
-                <span>hoặc đăng nhập nhanh</span>
+                <span>Demo Accounts</span>
             </div>
             <div class="quick-login-buttons">
-                <button type="button" class="btn btn-quick-user" id="quick-login-user">
-                    <i class="fas fa-user"></i> Người mượn sách
+                <button type="button" class="btn btn-secondary" id="demo-member">
+                    <i class="fas fa-user"></i> Member Demo
                 </button>
-                <button type="button" class="btn btn-quick-admin" id="quick-login-admin">
-                    <i class="fas fa-user-shield"></i> Thủ thư
+                <button type="button" class="btn btn-secondary" id="demo-librarian">
+                    <i class="fas fa-user-shield"></i> Librarian Demo
                 </button>
             </div>
             <div class="login-demo">
-                <p><strong>Tài khoản demo:</strong></p>
-                <p>👤 Người mượn: <code>user / user123</code></p>
-                <p>👨‍💼 Thủ thư: <code>admin / admin123</code></p>
+                <p><strong>Demo Accounts:</strong></p>
+                <p>👤 Member: <code>john / john123</code></p>
+                <p>👨‍💼 Librarian: <code>admin / admin123</code></p>
             </div>
         </div>
     </div>
 
     <!-- Main App -->
     <div id="main-app" style="display: none;">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="logo">
-            <i class="fas fa-book-open"></i>
-            <h2>Thư viện</h2>
-        </div>
-        <nav class="nav-menu" id="nav-menu">
-            <!-- Navigation will be populated based on user role -->
-        </nav>
-        <div class="sidebar-footer">
-            <button class="btn btn-logout" id="logout-btn">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Đăng xuất</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-left">
-                <h1 id="page-title">Tổng quan</h1>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h2>Library</h2>
             </div>
-            <div class="header-right">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="global-search" placeholder="Tìm kiếm...">
-                </div>
-                <div class="user-info">
-                    <i class="fas fa-user-circle"></i>
-                    <span id="user-name">User</span>
-                    <span class="user-role" id="user-role-badge"></span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Dashboard Page -->
-        <div id="dashboard-page" class="page active">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="total-books">0</h3>
-                        <p>Tổng số sách</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <nav class="nav-menu" id="nav-menu">
+                <!-- Librarian Menu -->
+                <div id="librarian-menu">
+                    <a href="#" class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="staff">
                         <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="total-members">0</h3>
-                        <p>Thành viên</p>
-                    </div>
+                        <span>Staff Management</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="books">
+                        <i class="fas fa-book"></i>
+                        <span>Books Management</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="orders">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Orders Management</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="suppliers">
+                        <i class="fas fa-truck"></i>
+                        <span>Suppliers Management</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="reports">
+                        <i class="fas fa-file-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="audit">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Audit & Monitoring</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>System Configuration</span>
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <i class="fas fa-book-reader"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="borrowed-books">0</h3>
-                        <p>Đang mượn</p>
-                    </div>
+                
+                <!-- Member Menu -->
+                <div id="member-menu" style="display: none;">
+                    <a href="#" class="nav-item active" data-page="member-dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>My Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="member-search">
+                        <i class="fas fa-search"></i>
+                        <span>Search Books</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="member-reservations">
+                        <i class="fas fa-bookmark"></i>
+                        <span>My Reservations</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="member-history">
+                        <i class="fas fa-history"></i>
+                        <span>Loan History</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="member-fines">
+                        <i class="fas fa-money-bill"></i>
+                        <span>Fine Management</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="member-notifications">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="available-books">0</h3>
-                        <p>Sách khả dụng</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-content">
-                <div class="recent-activities">
-                    <h3>Hoạt động gần đây</h3>
-                    <div id="recent-activities-list" class="activity-list">
-                        <!-- Activities will be added dynamically -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- User Books Catalog (For Users) -->
-        <div id="catalog-page" class="page">
-            <div class="books-grid" id="books-catalog">
-                <!-- Books catalog will be rendered here -->
-            </div>
-        </div>
-
-        <!-- My Borrowings (For Users) -->
-        <div id="my-borrowings-page" class="page">
-            <div class="table-container">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Sách</th>
-                            <th>Tác giả</th>
-                            <th>Ngày mượn</th>
-                            <th>Ngày trả dự kiến</th>
-                            <th>Trạng thái</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody id="my-borrowings-table-body">
-                        <!-- User's borrowings will be added dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Books Page -->
-        <div id="books-page" class="page">
-            <div class="page-header">
-                <button class="btn btn-primary" id="add-book-btn">
-                    <i class="fas fa-plus"></i> Thêm sách mới
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-logout" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
                 </button>
             </div>
-            <div class="table-container">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên sách</th>
-                            <th>Tác giả</th>
-                            <th>Thể loại</th>
-                            <th>ISBN</th>
-                            <th>Số lượng</th>
-                            <th>Trạng thái</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody id="books-table-body">
-                        <!-- Books will be added dynamically -->
-                    </tbody>
-                </table>
-            </div>
         </div>
 
-        <!-- Members Page -->
-        <div id="members-page" class="page">
-            <div class="page-header">
-                <button class="btn btn-primary" id="add-member-btn">
-                    <i class="fas fa-plus"></i> Thêm thành viên
-                </button>
-            </div>
-            <div class="table-container">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Họ tên</th>
-                            <th>Email</th>
-                            <th>Số điện thoại</th>
-                            <th>Ngày đăng ký</th>
-                            <th>Sách đang mượn</th>
-                            <th>Hành động</th>
-                        </tr>
-                    </thead>
-                    <tbody id="members-table-body">
-                        <!-- Members will be added dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="global-search" placeholder="Search...">
+                    </div>
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="user-name">Admin</span>
+                    </div>
+                </div>
+            </header>
 
-        <!-- Borrowing Page -->
-        <div id="borrowing-page" class="page">
-            <div class="borrowing-form-container">
-                <div class="form-card">
-                    <h3>Mượn sách</h3>
-                    <form id="borrow-form">
-                        <div class="form-group">
-                            <label>Thành viên</label>
-                            <select id="borrow-member" required>
-                                <option value="">Chọn thành viên</option>
-                            </select>
+            <!-- Dashboard Page -->
+            <div id="dashboard-page" class="page active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-book"></i>
                         </div>
-                        <div class="form-group">
-                            <label>Sách</label>
-                            <select id="borrow-book" required>
-                                <option value="">Chọn sách</option>
-                            </select>
+                        <div class="stat-content">
+                            <h3 id="total-books">1,250</h3>
+                            <p>Total Books</p>
                         </div>
-                        <div class="form-group">
-                            <label>Ngày trả dự kiến</label>
-                            <input type="date" id="return-date" required>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-users"></i>
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-check"></i> Xác nhận mượn
-                        </button>
-                    </form>
+                        <div class="stat-content">
+                            <h3 id="total-staff">45</h3>
+                            <p>Staff Members</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-orders">87</h3>
+                            <p>Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-suppliers">12</h3>
+                            <p>Suppliers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-content">
+                    <div class="dashboard-left">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Recent Activity</h3>
+                            </div>
+                            <div class="activity-list" id="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: #e3f2fd;">
+                                        <i class="fas fa-plus" style="color: #1976d2;"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Add New Book</strong></p>
+                                        <small>5 minutes ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: #f3e5f5;">
+                                        <i class="fas fa-user-plus" style="color: #7b1fa2;"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Add New Staff</strong></p>
+                                        <small>1 hour ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon" style="background: #e8f5e9;">
+                                        <i class="fas fa-check" style="color: #388e3c;"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Completed Order</strong></p>
+                                        <small>2 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-right">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Books by Category</h3>
+                            </div>
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="current-borrowings">
-                <h3>Sách đang mượn</h3>
-                <div class="table-container">
-                    <table class="data-table">
+            <!-- Staff Management Page -->
+            <div id="staff-page" class="page">
+                <div class="page-header">
+                    <h2>Staff Management</h2>
+                    <button class="btn btn-primary" id="add-staff-btn">
+                        <i class="fas fa-plus"></i> Add Staff
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="staff-search" placeholder="Search by name, email...">
+                    <select id="staff-department-filter">
+                        <option value="">All Departments</option>
+                        <option value="it">IT</option>
+                        <option value="hr">HR</option>
+                        <option value="library">Library</option>
+                    </select>
+                    <select id="staff-status-filter">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Thành viên</th>
-                                <th>Sách</th>
-                                <th>Ngày mượn</th>
-                                <th>Ngày trả dự kiến</th>
-                                <th>Trạng thái</th>
-                                <th>Hành động</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Position</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="borrowings-table-body">
-                            <!-- Borrowings will be added dynamically -->
+                        <tbody id="staff-table-body">
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <!-- Books Management Page -->
+            <div id="books-page" class="page">
+                <div class="page-header">
+                    <h2>Books Management</h2>
+                    <button class="btn btn-primary" id="add-book-btn">
+                        <i class="fas fa-plus"></i> Add Book
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="book-search" placeholder="Search by title, author...">
+                    <select id="book-category-filter">
+                        <option value="">All Categories</option>
+                        <option value="fiction">Fiction</option>
+                        <option value="science">Science</option>
+                        <option value="history">History</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                    <select id="book-status-filter">
+                        <option value="">All Status</option>
+                        <option value="available">Available</option>
+                        <option value="borrowed">Borrowed</option>
+                        <option value="lost">Lost</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ISBN</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="books-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Orders Management Page -->
+            <div id="orders-page" class="page">
+                <div class="page-header">
+                    <h2>Orders Management</h2>
+                    <button class="btn btn-primary" id="add-order-btn">
+                        <i class="fas fa-plus"></i> Create Order
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="order-search" placeholder="Search by order code, supplier...">
+                    <select id="order-status-filter">
+                        <option value="">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order Code</th>
+                                <th>Supplier</th>
+                                <th>Order Date</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Suppliers Management Page -->
+            <div id="suppliers-page" class="page">
+                <div class="page-header">
+                    <h2>Suppliers Management</h2>
+                    <button class="btn btn-primary" id="add-supplier-btn">
+                        <i class="fas fa-plus"></i> Add Supplier
+                    </button>
+                </div>
+
+                <div class="filters">
+                    <input type="text" id="supplier-search" placeholder="Search by name, phone...">
+                </div>
+
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="suppliers-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reports Page -->
+            <div id="reports-page" class="page">
+                <div class="page-header">
+                    <h2>Reports</h2>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Books Report by Time</h3>
+                        </div>
+                        <canvas id="booksTimeChart"></canvas>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Orders Report</h3>
+                        </div>
+                        <canvas id="ordersChart"></canvas>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total Revenue</h3>
+                        </div>
+                        <div class="report-stat">
+                            <h2>12,500,000 VND</h2>
+                            <p style="color: #43e97b;"><i class="fas fa-arrow-up"></i> +15% from last month</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Top Staff</h3>
+                        </div>
+                        <div class="top-staff" id="top-staff-list">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audit & Monitoring Page -->
+            <div id="audit-page" class="page">
+                <div class="page-header">
+                    <h2>Audit & Monitoring</h2>
+                </div>
+
+                <div class="audit-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>System Logs</h3>
+                        </div>
+                        <div class="filters">
+                            <select id="log-level-filter">
+                                <option value="">All Levels</option>
+                                <option value="info">Information</option>
+                                <option value="warning">Warning</option>
+                                <option value="error">Error</option>
+                            </select>
+                            <input type="date" id="log-date-filter">
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Level</th>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="audit-log-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings-page" class="page">
+                <div class="page-header">
+                    <h2>System Configuration</h2>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>General Settings</h3>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label>Library Name</label>
+                                <input type="text" value="University Library XYZ" id="lib-name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="library@example.com" id="lib-email">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" value="0123456789" id="lib-phone">
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea id="lib-address">123 Main Street, District 1, City</textarea>
+                            </div>
+                            <button class="btn btn-primary">Save Configuration</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Borrowing Settings</h3>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label>Max Borrowing Days</label>
+                                <input type="number" value="30" id="max-borrow-days">
+                            </div>
+                            <div class="form-group">
+                                <label>Late Fee (VND/day)</label>
+                                <input type="number" value="5000" id="late-fee">
+                            </div>
+                            <div class="form-group">
+                                <label>Max Books Per Member</label>
+                                <input type="number" value="5" id="max-books">
+                            </div>
+                            <button class="btn btn-primary">Save Configuration</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>User Management</h3>
+                        </div>
+                        <div class="settings-form">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-user-plus"></i> Add Account
+                            </button>
+                            <button class="btn btn-secondary" style="margin-left: 10px;">
+                                <i class="fas fa-key"></i> Reset Password
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Backup Data</h3>
+                        </div>
+                        <div class="settings-form">
+                            <p style="margin-bottom: 15px;">Last backup: <strong id="last-backup">2024-01-01 10:30</strong></p>
+                            <button class="btn btn-success">
+                                <i class="fas fa-download"></i> Backup Now
+                            </button>
+                            <button class="btn btn-secondary" style="margin-left: 10px;">
+                                <i class="fas fa-upload"></i> Restore
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+
+    <!-- Add/Edit Staff Modal -->
+    <div id="staff-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Staff</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form class="modal-form" id="staff-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="staff-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="staff-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="staff-phone">
+                </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <select id="staff-dept" required>
+                        <option value="">Select Department</option>
+                        <option value="it">IT</option>
+                        <option value="hr">HR</option>
+                        <option value="library">Library</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Position</label>
+                    <input type="text" id="staff-position" required>
+                </div>
+                <div class="form-group">
+                    <label>Salary</label>
+                    <input type="number" id="staff-salary">
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="staff-status">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Book Modal -->
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Book</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form class="modal-form" id="book-form">
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input type="text" id="book-isbn" required>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="book-title" required>
+                </div>
+                <div class="form-group">
+                    <label>Author</label>
+                    <input type="text" id="book-author" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="book-category">
+                        <option value="fiction">Fiction</option>
+                        <option value="science">Science</option>
+                        <option value="history">History</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" id="book-price">
+                </div>
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" id="book-quantity" value="1">
+                </div>
+                <div class="form-group">
+                    <label>Publication Year</label>
+                    <input type="number" id="book-year">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Order Modal -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Order</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form class="modal-form" id="order-form">
+                <div class="form-group">
+                    <label>Supplier</label>
+                    <select id="order-supplier" required>
+                        <option value="">Select Supplier</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Book</label>
+                    <select id="order-book" required>
+                        <option value="">Select Book</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" id="order-quantity" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Unit Price</label>
+                    <input type="number" id="order-unit-price" required>
+                </div>
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="order-notes"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Supplier Modal -->
+    <div id="supplier-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Supplier</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form class="modal-form" id="supplier-form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="supplier-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="supplier-email">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="supplier-phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea id="supplier-address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="text" id="supplier-contact">
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="supplier-status">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Member Views -->
+    <!-- Member Dashboard -->
+    <div id="member-dashboard-page" class="page" style="display: none;">
+        <div class="member-header">
+            <div class="member-banner">
+                <div class="member-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="member-info">
+                    <h2 id="member-name">John Doe</h2>
+                    <p id="member-id">Member ID: M001</p>
+                    <p id="member-since">Member Since: 2023-01-15</p>
+                </div>
+                <button class="btn btn-primary" id="edit-profile-btn">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+            </div>
         </div>
 
-        <!-- History Page -->
-        <div id="history-page" class="page">
-            <div class="table-container">
-                <table class="data-table">
+        <div class="member-stats">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="books-borrowed">2</h3>
+                    <p>Books Borrowed</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="books-reserved">1</h3>
+                    <p>Reserved Books</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="notifications-count">3</h3>
+                    <p>Notifications</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: linear-gradient(135deg, #f5576c 0%, #ffa726 100%);">
+                    <i class="fas fa-money-bill"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="outstanding-fine">0</h3>
+                    <p>Outstanding Fine</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="member-content">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Current Loans</h3>
+                </div>
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Thành viên</th>
-                            <th>Sách</th>
-                            <th>Ngày mượn</th>
-                            <th>Ngày trả</th>
-                            <th>Trạng thái</th>
+                            <th>Book Title</th>
+                            <th>Author</th>
+                            <th>Borrow Date</th>
+                            <th>Due Date</th>
+                            <th>Days Left</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody id="history-table-body">
-                        <!-- History will be added dynamically -->
+                    <tbody id="member-current-loans">
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- Modal for Add/Edit Book -->
-    <div id="book-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="book-modal-title">Thêm sách mới</h3>
-                <span class="close">&times;</span>
+    <!-- Search & Borrow Books -->
+    <div id="member-search-page" class="page" style="display: none;">
+        <div class="page-header">
+            <h2>Search & Borrow Books</h2>
+        </div>
+
+        <div class="search-section">
+            <div class="search-filters">
+                <input type="text" id="search-title" placeholder="Search by title or author...">
+                <select id="search-category">
+                    <option value="">All Categories</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="technology">Technology</option>
+                </select>
             </div>
-            <form id="book-form">
-                <input type="hidden" id="book-id">
-                <div class="form-group">
-                    <label>Tên sách *</label>
-                    <input type="text" id="book-title" required>
-                </div>
-                <div class="form-group">
-                    <label>Tác giả *</label>
-                    <input type="text" id="book-author" required>
-                </div>
-                <div class="form-group">
-                    <label>Thể loại *</label>
-                    <input type="text" id="book-category" required>
-                </div>
-                <div class="form-group">
-                    <label>ISBN</label>
-                    <input type="text" id="book-isbn">
-                </div>
-                <div class="form-group">
-                    <label>Số lượng *</label>
-                    <input type="number" id="book-quantity" min="1" required>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary cancel-btn">Hủy</button>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                </div>
-            </form>
+        </div>
+
+        <div class="books-grid" id="books-grid">
         </div>
     </div>
 
-    <!-- Modal for Add/Edit Member -->
-    <div id="member-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="member-modal-title">Thêm thành viên</h3>
-                <span class="close">&times;</span>
-            </div>
-            <form id="member-form">
-                <input type="hidden" id="member-id">
-                <div class="form-group">
-                    <label>Họ tên *</label>
-                    <input type="text" id="member-name" required>
-                </div>
-                <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" id="member-email" required>
-                </div>
-                <div class="form-group">
-                    <label>Số điện thoại *</label>
-                    <input type="tel" id="member-phone" required>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary cancel-btn">Hủy</button>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                </div>
-            </form>
+    <!-- Reservations -->
+    <div id="member-reservations-page" class="page" style="display: none;">
+        <div class="page-header">
+            <h2>My Reservations</h2>
+        </div>
+
+        <div class="card">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Author</th>
+                        <th>Reserved Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="reservations-table-body">
+                </tbody>
+            </table>
         </div>
     </div>
 
+    <!-- Loan History -->
+    <div id="member-history-page" class="page" style="display: none;">
+        <div class="page-header">
+            <h2>Loan History</h2>
+        </div>
+
+        <div class="card">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Borrow Date</th>
+                        <th>Return Date</th>
+                        <th>Days Borrowed</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="history-table-body">
+                </tbody>
+            </table>
+        </div>
     </div>
-    <!-- End Main App -->
+
+    <!-- Fine Management -->
+    <div id="member-fines-page" class="page" style="display: none;">
+        <div class="page-header">
+            <h2>Fine Management</h2>
+        </div>
+
+        <div id="fines-container">
+            <div class="member-stats">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f5576c 0%, #ffa726 100%);">
+                        <i class="fas fa-money-bill"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="outstanding-fine-amount">0</h3>
+                        <p>Total Outstanding Fine</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-fines-count">0</h3>
+                        <p>Overdue Items</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Fine Details</h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Due Date</th>
+                            <th>Days Late</th>
+                            <th>Fine Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fines-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="member-notifications-page" class="page" style="display: none;">
+        <div class="page-header">
+            <h2>Notifications</h2>
+        </div>
+
+        <div class="notifications-container" id="notifications-container">
+        </div>
+    </div>
+
+    <!-- Modals -->
 
     <script src="script.js"></script>
-</body>
-</html>

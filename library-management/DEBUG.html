@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Check Script</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Courier New', monospace; background: #1e1e1e; color: #d4d4d4; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 20px; }
+        h1 { color: #4fc3f7; margin-bottom: 20px; }
+        .section { background: #252526; padding: 15px; margin: 15px 0; border-radius: 5px; border-left: 4px solid #4fc3f7; }
+        .section h2 { color: #9cdcfe; margin-bottom: 10px; font-size: 16px; }
+        button { background: #007acc; color: white; border: none; padding: 10px 20px; border-radius: 3px; cursor: pointer; margin: 5px; }
+        button:hover { background: #005a9e; }
+        .log { background: #1e1e1e; padding: 10px; margin: 10px 0; border-radius: 3px; max-height: 300px; overflow-y: auto; }
+        .log-item { padding: 5px 0; border-bottom: 1px solid #333; }
+        .success { color: #4ec9b0; }
+        .error { color: #f48771; }
+        .warning { color: #dcdcaa; }
+        .info { color: #9cdcfe; }
+        code { background: #333; padding: 2px 6px; border-radius: 3px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Library Management System - Debug Console</h1>
+        
+        <div class="section">
+            <h2>📋 System Status</h2>
+            <button onclick="checkAll()">Run All Tests</button>
+            <button onclick="clearLogs()">Clear Log</button>
+            <div class="log" id="output"></div>
+        </div>
+
+        <div class="grid">
+            <div class="section">
+                <h2>📦 Check Files</h2>
+                <button onclick="checkScriptLoaded()">Check script.js</button>
+                <button onclick="checkFunctions()">Check Functions</button>
+                <button onclick="checkElements()">Check Elements</button>
+            </div>
+
+            <div class="section">
+                <h2>💾 LocalStorage</h2>
+                <button onclick="checkStorage()">Check Storage</button>
+                <button onclick="clearStorage()">Clear Storage</button>
+                <button onclick="testLogin()">Test Login</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧪 Test Member Login</h2>
+            <button onclick="testMemberDashboard()">Load Member Dashboard</button>
+            <button onclick="goToIndex()">Go to index.html</button>
+        </div>
+    </div>
+
+    <!-- Load script.js to test it -->
+    <script src="script.js"></script>
+    <script>
+        const output = document.getElementById('output');
+        let logCount = 0;
+
+        function log(message, type = 'info') {
+            logCount++;
+            const item = document.createElement('div');
+            item.className = `log-item ${type}`;
+            item.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            output.appendChild(item);
+            output.scrollTop = output.scrollHeight;
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+
+        function clearLogs() {
+            output.innerHTML = '';
+            logCount = 0;
+            log('Logs cleared', 'info');
+        }
+
+        function checkScriptLoaded() {
+            log('Checking if script.js is loaded...', 'info');
+            try {
+                if (typeof staffData !== 'undefined') {
+                    log('✓ staffData found', 'success');
+                } else {
+                    log('✗ staffData NOT found', 'error');
+                }
+                
+                if (typeof booksData !== 'undefined') {
+                    log('✓ booksData found', 'success');
+                } else {
+                    log('✗ booksData NOT found', 'error');
+                }
+
+                if (typeof memberData !== 'undefined') {
+                    log('✓ memberData found', 'success');
+                } else {
+                    log('✗ memberData NOT found', 'error');
+                }
+
+                if (typeof currentUser !== 'undefined') {
+                    log('✓ currentUser variable found', 'success');
+                } else {
+                    log('✗ currentUser NOT found', 'error');
+                }
+            } catch (e) {
+                log('✗ Error checking script: ' + e.message, 'error');
+            }
+        }
+
+        function checkFunctions() {
+            log('Checking functions...', 'info');
+            
+            const functions = [
+                'setupLoginListeners',
+                'showApp',
+                'showLogin',
+                'loadMemberDashboard',
+                'loadMemberSearchPage',
+                'borrowBook',
+                'reserveBook',
+                'renewLoan',
+                'loadMemberHistoryPage',
+                'loadMemberFinesPage',
+                'loadMemberNotificationsPage',
+                'payFine'
+            ];
+
+            functions.forEach(fn => {
+                if (typeof window[fn] === 'function') {
+                    log(`✓ ${fn}() exists`, 'success');
+                } else {
+                    log(`✗ ${fn}() NOT found`, 'error');
+                }
+            });
+        }
+
+        function checkElements() {
+            log('Checking HTML elements...', 'info');
+            
+            const elements = [
+                'login-page',
+                'main-app',
+                'login-form',
+                'login-username',
+                'login-password',
+                'login-role',
+                'demo-member',
+                'demo-librarian',
+                'librarian-menu',
+                'member-menu',
+                'member-dashboard-page',
+                'member-search-page',
+                'member-reservations-page',
+                'member-history-page',
+                'member-fines-page',
+                'member-notifications-page',
+                'user-name',
+                'logout-btn'
+            ];
+
+            elements.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    log(`✓ #${id} found`, 'success');
+                } else {
+                    log(`✗ #${id} NOT found`, 'error');
+                }
+            });
+        }
+
+        function checkStorage() {
+            log('Checking localStorage...', 'info');
+            const stored = localStorage.getItem('currentUser');
+            if (stored) {
+                try {
+                    const user = JSON.parse(stored);
+                    log(`✓ Stored user: ${user.name} (${user.role})`, 'success');
+                } catch (e) {
+                    log(`✗ Error parsing stored user: ${e.message}`, 'error');
+                }
+            } else {
+                log('⚠ No user stored in localStorage', 'warning');
+            }
+        }
+
+        function clearStorage() {
+            localStorage.clear();
+            log('✓ localStorage cleared', 'success');
+        }
+
+        function testLogin() {
+            log('Testing member login...', 'info');
+            try {
+                const testUser = {
+                    username: 'john',
+                    role: 'member',
+                    name: 'John Doe',
+                    id: 'M001'
+                };
+                localStorage.setItem('currentUser', JSON.stringify(testUser));
+                log(`✓ Test member saved to localStorage`, 'success');
+                log(`  Username: ${testUser.username}`, 'info');
+                log(`  Role: ${testUser.role}`, 'info');
+                log(`  Name: ${testUser.name}`, 'info');
+            } catch (e) {
+                log(`✗ Error: ${e.message}`, 'error');
+            }
+        }
+
+        function testMemberDashboard() {
+            log('Testing member dashboard load...', 'info');
+            try {
+                // Set member user
+                const testUser = {
+                    username: 'john',
+                    role: 'member',
+                    name: 'John Doe',
+                    id: 'M001'
+                };
+                currentUser = testUser;
+                localStorage.setItem('currentUser', JSON.stringify(testUser));
+                log(`✓ Set currentUser to member`, 'success');
+
+                // Try to show app
+                if (typeof showApp === 'function') {
+                    showApp();
+                    log(`✓ showApp() called`, 'success');
+                } else {
+                    log(`✗ showApp() not found`, 'error');
+                }
+
+                // Check if dashboard loaded
+                const dashboardPage = document.getElementById('member-dashboard-page');
+                if (dashboardPage) {
+                    log(`✓ member-dashboard-page element exists`, 'success');
+                    log(`  Display style: ${dashboardPage.style.display}`, 'info');
+                } else {
+                    log(`✗ member-dashboard-page not found`, 'error');
+                }
+
+                // Check if member menu is visible
+                const memberMenu = document.getElementById('member-menu');
+                if (memberMenu) {
+                    log(`✓ member-menu exists`, 'success');
+                    log(`  Display style: ${memberMenu.style.display}`, 'info');
+                } else {
+                    log(`✗ member-menu not found`, 'error');
+                }
+            } catch (e) {
+                log(`✗ Error: ${e.message}`, 'error');
+                console.error(e);
+            }
+        }
+
+        function goToIndex() {
+            log('Redirecting to index.html...', 'info');
+            testLogin();
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+
+        function checkAll() {
+            clearLogs();
+            log('=== RUNNING ALL TESTS ===', 'info');
+            log('', 'info');
+            
+            checkScriptLoaded();
+            log('', 'info');
+            
+            checkFunctions();
+            log('', 'info');
+            
+            checkElements();
+            log('', 'info');
+            
+            checkStorage();
+            log('', 'info');
+            
+            log('=== TESTS COMPLETE ===', 'success');
+        }
+
+        // Auto-run on load
+        window.addEventListener('load', () => {
+            log('Debug console ready', 'success');
+        });
+    </script>
+</body>
+</html>
