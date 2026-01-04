@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Navigate to product detail page
 function goToProductDetail(productId) {
-    window.location.href = `product-detail.html?id=${productId}`;
+    console.log('goToProductDetail called, id=', productId);
+    // use assign for more explicit navigation
+    window.location.assign(`product-detail.html?id=${productId}`);
 }
 
 // ==========================================

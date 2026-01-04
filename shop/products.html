@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sản Phẩm - Cute Shop</title>
+    <title>Sản Phẩm - Sao béo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav>
-            <a href="index.html" class="logo">
-                <span>🌸</span> Cute Shop
+            <a href="../index.html" class="logo">
+                <span>🌟</span> Sao Béo
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Trang Chủ</a></li>
                 <li><a href="products.html">Sản Phẩm</a></li>
                 <li><a href="products.html?category=sticker">Sticker</a></li>
                 <li><a href="products.html?category=keychain">Keychain</a></li>
+                <li><a href="products.html?category=bestie">Bestie Set</a></li>
             </ul>
             <a href="cart.html" class="cart-icon">
                 🛒
@@ -27,9 +28,8 @@
     </header>
 
     <!-- Page Title -->
-    <section class="hero" style="padding: 2rem;">
+    <section class="hero" style="padding-top: 27rem; padding-bottom: 1rem; background-image: url('./bìa sao béo.png'); background-position: center 48%; background-size: cover;">
         <h1>🛍️ Tất Cả Sản Phẩm</h1>
-        <p>Khám phá bộ sưu tập Sticker & Keychain đa dạng của chúng tôi!</p>
     </section>
 
     <!-- Products Section -->
@@ -38,207 +38,213 @@
             <button class="tab-btn active" onclick="filterProducts('all')">Tất Cả</button>
             <button class="tab-btn" onclick="filterProducts('sticker')">🏷️ Sticker</button>
             <button class="tab-btn" onclick="filterProducts('keychain')">🔑 Keychain</button>
+            <button class="tab-btn" onclick="filterProducts('bestie')">💞 Bestie Set</button>
         </div>
 
         <div class="products-grid" id="productsGrid">
             <!-- Stickers -->
              
             <div class="product-card" data-category="sticker" data-id="1">
-                <span class="product-badge">Hot</span>
-                <div class="product-image"><img src="./1.png" alt="Sticker 1"></div>
+                <div class="product-image" onclick="goToProductDetail(1)" style="cursor: pointer;"><img src="./1.png" alt="Sticker 1"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Sticker Mèo Kawaii</h3>
-                    <p class="product-category">Sticker</p>
-                    <p class="product-price">25.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(1, 'Sticker Mèo Kawaii', 25000, '🐱')">
+                    <h3 class="product-name" onclick="goToProductDetail(1)" style="cursor: pointer;">Sticker Set Sao Béo – Hình Dán Phụ Kiện Trang Trí</h3>
+                    <p class="product-category">Sticker Set</p>
+                    <p class="product-price">50.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(1, 'Sticker Set Sao Béo – Hình Dán Phụ Kiện Trang Trí', 50000, './1.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="sticker" data-id="2">
-                <div class="product-image"><img src="./2.png" alt="Sticker 2"></div>
+                <div class="product-image" onclick="goToProductDetail(2)" style="cursor: pointer;"><img src="./2.png" alt="Sticker 2"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Sticker Hoa Anh Đào</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(2)" style="cursor: pointer;">Sticker Sao Béo - "Trộm vía may mắn"</h3>
                     <p class="product-category">Sticker</p>
-                    <p class="product-price">20.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(2, 'Sticker Hoa Anh Đào', 20000, '🌸')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(2, 'Sticker Sao Béo - "Trộm vía may mắn"', 30000, './2.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="sticker" data-id="3">
-                <span class="product-badge sale">-20%</span>
-                <div class="product-image"><img src="./3.png" alt="Sticker 3"></div>
+                <div class="product-image" onclick="goToProductDetail(3)" style="cursor: pointer;"><img src="./3.png" alt="Sticker 3"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Sticker Cáo Dễ Thương</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(3)" style="cursor: pointer;">Sticker Sao Béo - "Đi đường cẩn thận"</h3>
                     <p class="product-category">Sticker</p>
-                    <p class="product-price">18.000₫ <span class="old-price">22.000₫</span></p>
-                    <button class="add-to-cart" onclick="addToCart(3, 'Sticker Cáo Dễ Thương', 18000, '🦊')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(3, 'Sticker Sao Béo - "Đi đường cẩn thận"', 30000, './3.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="sticker" data-id="4">
-                <div class="product-image"><img src="./4.png" alt="Sticker 4"></div>
+                <div class="product-image" onclick="goToProductDetail(4)" style="cursor: pointer;"><img src="./4.png" alt="Sticker 4"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Sticker Trái Cây</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(4)" style="cursor: pointer;">Sticker Sao Béo - "Nhớ giữ sức khỏe"</h3>
                     <p class="product-category">Sticker</p>
-                    <p class="product-price">15.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(4, 'Sticker Trái Cây', 15000, '🍓')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(4, 'Sticker Sao Béo - "Nhớ giữ sức khỏe"', 30000, './4.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="sticker" data-id="9">
-                <div class="product-image"><img src="./9.png" alt="Keychain 9"></div>
+            <div class="product-card" data-category="sticker" data-id="5">
+                <div class="product-image" onclick="goToProductDetail(5)" style="cursor: pointer;"><img src="./5.png" alt="Sticker 5"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Sticker Gấu Trúc</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(5)" style="cursor: pointer;">Sticker Sao Béo - "Không sao đâu"</h3>
                     <p class="product-category">Sticker</p>
-                    <p class="product-price">22.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(9, 'Sticker Gấu Trúc', 22000, '🐼')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(5, 'Sticker Sao Béo - "Không sao đâu"', 30000, './5.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="sticker" data-id="10">
-                <span class="product-badge">New</span>
-                <div class="product-image"><img src="./10.png" alt="Keychain 10"></div>
+            <div class="product-card" data-category="sticker" data-id="6">
+                <div class="product-image" onclick="goToProductDetail(6)" style="cursor: pointer;"><img src="./6.png" alt="Sticker 6"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Sticker Bướm Xinh</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(6)" style="cursor: pointer;">Sticker Sao Béo - "Đừng nản chí!"</h3>
                     <p class="product-category">Sticker</p>
-                    <p class="product-price">19.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(10, 'Sticker Bướm Xinh', 19000, '🦋')">
-                        Thêm vào giỏ 🛒
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="sticker" data-id="11">
-                <div class="product-image"><img src="./11.png" alt="Keychain 11"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Sticker Cầu Vồng</h3>
-                    <p class="product-category">Sticker</p>
-                    <p class="product-price">16.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(11, 'Sticker Cầu Vồng', 16000, '🌈')">
-                        Thêm vào giỏ 🛒
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="sticker" data-id="12">
-                <span class="product-badge sale">-25%</span>
-                <div class="product-image"><img src="./12.png" alt="Keychain 12"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Sticker Bánh Ngọt</h3>
-                    <p class="product-category">Sticker</p>
-                    <p class="product-price">15.000₫ <span class="old-price">20.000₫</span></p>
-                    <button class="add-to-cart" onclick="addToCart(12, 'Sticker Bánh Ngọt', 15000, '🍰')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(6, 'Sticker Sao Béo - "Đừng nản chí!"', 30000, './6.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <!-- Keychains -->
-            <div class="product-card" data-category="keychain" data-id="5">
-                <span class="product-badge">Best Seller</span>
-                <div class="product-image"><img src="./5.png" alt="Keychain 5"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Keychain Thỏ Bông</h3>
-                    <p class="product-category">Keychain</p>
-                    <p class="product-price">45.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(5, 'Keychain Thỏ Bông', 45000, '🐰')">
-                        Thêm vào giỏ 🛒
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="keychain" data-id="6">
-                <div class="product-image"><img src="./6.png" alt="Keychain 6"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Keychain Ngôi Sao</h3>
-                    <p class="product-category">Keychain</p>
-                    <p class="product-price">35.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(6, 'Keychain Ngôi Sao', 35000, '⭐')">
-                        Thêm vào giỏ 🛒
-                    </button>
-                </div>
-            </div>
-
             <div class="product-card" data-category="keychain" data-id="7">
-                <span class="product-badge sale">-15%</span>
-                <div class="product-image"><img src="./7.png" alt="Keychain 7"></div>
+                <div class="product-image" onclick="goToProductDetail(7)" style="cursor: pointer;"><img src="./7.png" alt="Keychain Set Sao Béo – Móc Khóa Phụ Kiện Trang Trí"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Mặt Trăng</h3>
-                    <p class="product-category">Keychain</p>
-                    <p class="product-price">38.000₫ <span class="old-price">45.000₫</span></p>
-                    <button class="add-to-cart" onclick="addToCart(7, 'Keychain Mặt Trăng', 38000, '🌙')">
+                    <h3 class="product-name" onclick="goToProductDetail(7)" style="cursor: pointer;">Keychain Set Sao Béo – Móc Khóa Phụ Kiện Trang Trí</h3>
+                    <p class="product-category">Keychain set</p>
+                    <p class="product-price">50.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(7, 'Keychain Set Sao Béo–Móc Khóa Phụ Kiện Trang Trí', 50000, './7.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="keychain" data-id="8">
-                <div class="product-image"><img src="./8.png" alt="Keychain 8"></div>
+                <div class="product-image" onclick="goToProductDetail(8)" style="cursor: pointer;"><img src="./8.png" alt="Móc Khóa Sao Béo – "Đừng nản chí!""></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Nơ Hồng</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(8)" style="cursor: pointer;">Móc Khóa Sao Béo – "Đừng nản chí!"</h3>
                     <p class="product-category">Keychain</p>
-                    <p class="product-price">40.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(8, 'Keychain Nơ Hồng', 40000, '🎀')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(8, 'Móc Khóa Sao Béo – "Đừng nản chí!"', 30000, './8.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="keychain" data-id="13">
-                <span class="product-badge">New</span>
-                <div class="product-image">🌻</div>
+            <div class="product-card" data-category="keychain" data-id="9">
+                <div class="product-image" onclick="goToProductDetail(9)" style="cursor: pointer;"><img src="./9.png" alt="Móc Khóa Sao Béo – "Đi đường cẩn thận"" title="Móc Khóa Sao Béo – "Đi đường cẩn thận""></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Hoa Hướng Dương</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(9)" style="cursor: pointer;">Móc Khóa Sao Béo – "Đi đường cẩn thận"</h3>
                     <p class="product-category">Keychain</p>
-                    <p class="product-price">42.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(13, 'Keychain Hoa Hướng Dương', 42000, '🌻')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(9, 'Móc Khóa Sao Béo – "Đi đường cẩn thận"', 30000, './9.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="keychain" data-id="14">
-                <div class="product-image">🍀</div>
+            <div class="product-card" data-category="keychain" data-id="10">
+                <div class="product-image" onclick="goToProductDetail(10)" style="cursor: pointer;"><img src="./10.png" alt="Móc Khóa Sao Béo – "Trộm vía may mắn"" title="Móc Khóa Sao Béo – "Trộm vía may mắn""></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Cỏ 4 Lá</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(10)" style="cursor: pointer;">Móc Khóa Sao Béo – "Trộm vía may mắn"</h3>
                     <p class="product-category">Keychain</p>
-                    <p class="product-price">38.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(14, 'Keychain Cỏ 4 Lá', 38000, '🍀')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(10, 'Móc Khóa Sao Béo – "Trộm vía may mắn"', 30000, './10.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="keychain" data-id="15">
-                <span class="product-badge sale">-10%</span>
-                <div class="product-image">💎</div>
+            <div class="product-card" data-category="keychain" data-id="11">
+                <div class="product-image" onclick="goToProductDetail(11)" style="cursor: pointer;"><img src="./11.png" alt="Móc Khóa Sao Béo – "Không sao đâu"" title="Móc Khóa Sao Béo – "Không sao đâu""></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Kim Cương</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(11)" style="cursor: pointer;">Móc Khóa Sao Béo – "Không sao đâu"</h3>
                     <p class="product-category">Keychain</p>
-                    <p class="product-price">50.000₫ <span class="old-price">55.000₫</span></p>
-                    <button class="add-to-cart" onclick="addToCart(15, 'Keychain Kim Cương', 50000, '💎')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(11, 'Móc Khóa Sao Béo – "Không sao đâu"', 30000, './11.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <div class="product-card" data-category="keychain" data-id="16">
-                <div class="product-image">🎵</div>
+            <div class="product-card" data-category="keychain" data-id="12">
+                <div class="product-image" onclick="goToProductDetail(12)" style="cursor: pointer;"><img src="./12.png" alt="Móc Khóa Sao Béo – "Nhớ giữ sức khỏe"" title="Móc Khóa Sao Béo – "Nhớ giữ sức khỏe""></div>
                 <div class="product-info">
-                    <h3 class="product-name">Keychain Nốt Nhạc</h3>
+                    <h3 class="product-name" onclick="goToProductDetail(12)" style="cursor: pointer;">Móc Khóa Sao Béo – "Nhớ giữ sức khỏe"</h3>
                     <p class="product-category">Keychain</p>
-                    <p class="product-price">36.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(16, 'Keychain Nốt Nhạc', 36000, '🎵')">
+                    <p class="product-price">30.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(12, 'Móc Khóa Sao Béo – "Nhớ giữ sức khỏe"', 30000, './12.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bestie Set items (appear on listing) -->
+            <div class="product-card" data-category="bestie" data-id="13">
+                <div class="product-image" onclick="goToProductDetail(13)" style="cursor: pointer;"><img src="./13.png" alt="Combo Keychain 'Trộm vía may mắn' & Sticker Set cute phụ kiện trang trí Sao Béo" title="Combo Keychain 'Trộm vía may mắn' & Sticker Set cute phụ kiện trang trí Sao Béo"></div>
+                <div class="product-info">
+                    <h3 class="product-name" onclick="goToProductDetail(13)" style="cursor: pointer;">Combo Keychain 'Trộm vía may mắn' & Sticker Set cute phụ kiện trang trí Sao Béo</h3>
+                    <p class="product-category">Bestie Set</p>
+                    <p class="product-price">60.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(13, 'Combo Keychain \'Trộm vía may mắn\' & Sticker Set cute phụ kiện trang trí Sao Béo', 60000, './13.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="bestie" data-id="14">
+                <div class="product-image"  onclick="goToProductDetail(14)" style="cursor: pointer;"><img src="./14.png" alt="Combo Keychain 'Đi đường cẩn thận' & Sticker Set cute phụ kiện trang trí Sao Béo" title="Combo Keychain 'Đi đường cẩn thận' & Sticker Set cute phụ kiện trang trí Sao Béo"></div>
+                <div class="product-info">
+                    <h3 class="product-name" onclick="goToProductDetail(14)" style="cursor: pointer;">Combo Keychain 'Đi đường cẩn thận' & Sticker Set cute phụ kiện trang trí Sao Béo</h3>
+                    <p class="product-category">Bestie Set</p>
+                    <p class="product-price">60.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(14, 'Combo Keychain \'Đi đường cẩn thận\' & Sticker Set cute phụ kiện trang trí Sao Béo', 60000, './14.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="bestie" data-id="15">
+                <div class="product-image" onclick="goToProductDetail(15)" style="cursor: pointer;"><img src="./15.png" alt="Combo Keychain 'Không sao đâu' & Sticker Set cute phụ kiện trang trí Sao Béo" title="Combo Keychain 'Không sao đâu' & Sticker Set cute phụ kiện trang trí Sao Béo"></div>
+                <div class="product-info">
+                    <h3 class="product-name" onclick="goToProductDetail(15)" style="cursor: pointer;">Combo Keychain 'Không sao đâu' & Sticker Set cute phụ kiện trang trí Sao Béo</h3>
+                    <p class="product-category">Bestie Set</p>
+                    <p class="product-price">60.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(15, 'Combo Keychain \'Không sao đâu\' & Sticker Set cute phụ kiện trang trí Sao Béo', 60000, './15.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="bestie" data-id="16">
+                <div class="product-image" onclick="goToProductDetail(16)" style="cursor: pointer;  "><img src="./16.png" alt="Combo Keychain 'Nhớ giữ sức khỏe' & Sticker Set cute phụ kiện trang trí Sao Béo" title="Combo Keychain 'Nhớ giữ sức khỏe' & Sticker Set cute phụ kiện trang trí Sao Béo"></div>
+                <div class="product-info">
+                    <h3 class="product-name" onclick="goToProductDetail(16)" style="cursor: pointer;">Combo Keychain 'Nhớ giữ sức khỏe' & Sticker Set cute phụ kiện trang trí Sao Béo</h3>
+                    <p class="product-category">Bestie Set</p>
+                    <p class="product-price">60.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(16, 'Combo Keychain \'Nhớ giữ sức khỏe\' & Sticker Set cute phụ kiện trang trí Sao Béo', 60000, './16.png')">
+                        Thêm vào giỏ 🛒
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="bestie" data-id="17">
+                <div class="product-image" onclick="goToProductDetail(17)" style="cursor: pointer;"><img src="./17.png" alt="Combo Keychain 'Đừng nản chí!' & Sticker Set cute phụ kiện trang trí Sao Béo" title="Combo Keychain 'Đừng nản chí!' & Sticker Set cute phụ kiện trang trí Sao Béo"></div>
+                <div class="product-info">
+                    <h3 class="product-name" onclick="goToProductDetail(17)" style="cursor: pointer;">Combo Keychain 'Đừng nản chí!' & Sticker Set cute phụ kiện trang trí Sao Béo</h3>
+                    <p class="product-category">Bestie Set</p>
+                    <p class="product-price">60.000₫</p>
+                    <button class="add-to-cart" onclick="addToCart(17, 'Combo Keychain \'Đừng nản chí!\' & Sticker Set cute phụ kiện trang trí Sao Béo', 60000, './17.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
@@ -250,8 +256,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>🌸 Cute Shop</h3>
-                <p>Shop chuyên cung cấp Sticker và Keychain dễ thương, chất lượng cao.</p>
+                <h3>🌟 Sao Béo</h3>
+                <p>“Sticker xinh – Keychain yêu, mang đi đâu cũng thấy dễ thương</p>
             </div>
             <div class="footer-section">
                 <h3>Liên Kết</h3>
@@ -264,7 +270,7 @@
             <div class="footer-section">
                 <h3>Liên Hệ</h3>
                 <ul>
-                    <li>📧 contact@cuteshop.vn</li>
+                    <li>📧 saobeo@gmail.com</li>
                     <li>📞 0123 456 789</li>
                     <li>📍 Hà Nội, Việt Nam</li>
                 </ul>
@@ -279,7 +285,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Cute Shop. Made with 💖</p>
+            <p>© 2026 Sao Béo. Made with 💖</p>
         </div>
     </footer>
 

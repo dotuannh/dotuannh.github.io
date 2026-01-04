@@ -140,14 +140,20 @@ nav {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, rgba(208, 240, 255, 0.3) 0%, rgba(239, 249, 250, 0.3) 50%, rgba(239, 249, 250, 0.3) 100%), url('./bìa sao béo.png') center 55%/98% auto no-repeat;
-    padding: 6rem 2rem;
+    /* ảnh bao phủ toàn bộ nền, dịch lên cao để không thừa khoảng dưới */
+    background-image: linear-gradient(135deg, rgba(208, 240, 255, 0.3) 0%, rgba(239, 249, 250, 0.3) 50%, rgba(239, 249, 250, 0.3) 100%), url('./bìa sao béo.png');
+    background-position: center, center 48%;
+    background-size: 100% 100%, cover;
+    background-repeat: no-repeat, no-repeat;
+    padding: 0;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    min-height: 420px;
+    aspect-ratio: 16 / 5;
+    width: 100%;
+
 }
 
 .hero h1 {
@@ -200,7 +206,7 @@ nav {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 3rem 2rem 2rem 2rem;
 }
 
 /* Section Title */
@@ -328,10 +334,24 @@ nav {
 }
 
 .product-name {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--text-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+    letter-spacing: 0; /* tránh chữ bị thưa */
+    word-spacing: normal; /* tránh khoảng cách giữa từ quá lớn */
+    hyphens: auto;
+}
+
+/* subtitle inside product-name when using <small> */
+.product-name small {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-top: 0.15rem;
+    line-height: 1.1;
 }
 
 .product-category {

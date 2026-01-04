@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ Hàng - Cute Shop</title>
+    <title>Giỏ Hàng - Sao Béo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,13 +11,14 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <span>🌸</span> Cute Shop
+                <span>🌟</span> Sao Béo
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Trang Chủ</a></li>
                 <li><a href="products.html">Sản Phẩm</a></li>
                 <li><a href="products.html?category=sticker">Sticker</a></li>
                 <li><a href="products.html?category=keychain">Keychain</a></li>
+                <li><a href="products.html?category=bestie">Bestie Set</a></li>
             </ul>
             <a href="cart.html" class="cart-icon">
                 🛒
@@ -131,11 +132,19 @@
             cartEmpty.style.display = 'none';
             cartSummary.style.display = 'block';
 
-            cartItems.innerHTML = cart.map(item => `
+            cartItems.innerHTML = cart.map(item => {
+                // determine if icon is an image path or an emoji/string
+                const icon = item.icon || '';
+                const isImage = /\.(png|jpe?g|gif|svg)(\?|$)/i.test(icon) || /^\.|^https?:\/\//i.test(icon);
+                const iconHtml = isImage
+                    ? `<img src="${icon}" alt="${escapeHtml(item.name)}" title="${escapeHtml(item.name)}" style="width:48px;height:48px;object-fit:contain;border-radius:8px;"/>`
+                    : `<span class="cart-item-emoji">${escapeHtml(icon)}</span>`;
+
+                return `
                 <div class="cart-item" data-id="${item.id}">
-                    <div class="cart-item-image">${item.icon}</div>
+                    <div class="cart-item-image">${iconHtml}</div>
                     <div class="cart-item-details">
-                        <h4 class="cart-item-name">${item.name}</h4>
+                        <h4 class="cart-item-name">${escapeHtml(item.name)}</h4>
                         <p class="cart-item-price">${formatPrice(item.price)}</p>
                     </div>
                     <div class="quantity-controls">
@@ -146,9 +155,20 @@
                     <div class="cart-item-total">${formatPrice(item.price * item.quantity)}</div>
                     <button class="remove-item" onclick="removeFromCart(${item.id})">🗑️</button>
                 </div>
-            `).join('');
+            `;
+            }).join('');
 
             updateSummary();
+        }
+
+        // simple HTML escape to avoid breaking attributes
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
         }
 
         function updateQuantity(id, change) {
