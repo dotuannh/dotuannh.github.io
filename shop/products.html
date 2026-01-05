@@ -10,35 +10,39 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="../index.html" class="logo">
+            <a href="shop.html" class="logo">
                 <span>🌟</span> Sao Béo
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Trang Chủ</a></li>
                 <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="about.html">Về Chúng Tôi</a></li>
                 <li><a href="products.html?category=sticker">Sticker</a></li>
                 <li><a href="products.html?category=keychain">Keychain</a></li>
-                <li><a href="products.html?category=bestie">Bestie Set</a></li>
+                <li><a href="products.html?category=bestie">Combo</a></li>
             </ul>
             <a href="cart.html" class="cart-icon">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <a href="login.html" class="login-icon" title="Đăng nhập">
+                Đăng nhập
             </a>
         </nav>
     </header>
 
     <!-- Page Title -->
     <section class="hero" style="padding-top: 27rem; padding-bottom: 1rem; background-image: url('./bìa sao béo.png'); background-position: center 48%; background-size: cover;">
-        <h1>🛍️ Tất Cả Sản Phẩm</h1>
+
     </section>
 
     <!-- Products Section -->
     <section class="container">
         <div class="category-tabs">
             <button class="tab-btn active" onclick="filterProducts('all')">Tất Cả</button>
-            <button class="tab-btn" onclick="filterProducts('sticker')">🏷️ Sticker</button>
-            <button class="tab-btn" onclick="filterProducts('keychain')">🔑 Keychain</button>
-            <button class="tab-btn" onclick="filterProducts('bestie')">💞 Bestie Set</button>
+            <button class="tab-btn" onclick="filterProducts('sticker')"> Sticker</button>
+            <button class="tab-btn" onclick="filterProducts('keychain')"> Keychain</button>
+            <button class="tab-btn" onclick="filterProducts('bestie')"> Combo</button>
         </div>
 
         <div class="products-grid" id="productsGrid">
@@ -62,7 +66,7 @@
                     <h3 class="product-name" onclick="goToProductDetail(2)" style="cursor: pointer;">Sticker Sao Béo - "Trộm vía may mắn"</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(2, 'Sticker Sao Béo - "Trộm vía may mắn"', 30000, './2.png')">
+                    <button class="add-to-cart" onclick="addToCart(2, 'Sticker Sao Béo - Trộm vía may mắn', 30000, './2.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
@@ -74,7 +78,7 @@
                     <h3 class="product-name" onclick="goToProductDetail(3)" style="cursor: pointer;">Sticker Sao Béo - "Đi đường cẩn thận"</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(3, 'Sticker Sao Béo - "Đi đường cẩn thận"', 30000, './3.png')">
+                    <button class="add-to-cart" onclick="addToCart(3, 'Sticker Sao Béo - Đi đường cẩn thận', 30000, './3.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
@@ -86,7 +90,7 @@
                     <h3 class="product-name" onclick="goToProductDetail(4)" style="cursor: pointer;">Sticker Sao Béo - "Nhớ giữ sức khỏe"</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(4, 'Sticker Sao Béo - "Nhớ giữ sức khỏe"', 30000, './4.png')">
+                    <button class="add-to-cart" onclick="addToCart(4, 'Sticker Sao Béo - Nhớ giữ sức khỏe', 30000, './4.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
@@ -98,7 +102,7 @@
                     <h3 class="product-name" onclick="goToProductDetail(5)" style="cursor: pointer;">Sticker Sao Béo - "Không sao đâu"</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(5, 'Sticker Sao Béo - "Không sao đâu"', 30000, './5.png')">
+                    <button class="add-to-cart" onclick="addToCart(5, 'Sticker Sao Béo - Không sao đâu', 30000, './5.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
@@ -110,7 +114,7 @@
                     <h3 class="product-name" onclick="goToProductDetail(6)" style="cursor: pointer;">Sticker Sao Béo - "Đừng nản chí!"</h3>
                     <p class="product-category">Sticker</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(6, 'Sticker Sao Béo - "Đừng nản chí!"', 30000, './6.png')">
+                    <button class="add-to-cart" onclick="addToCart(6, 'Sticker Sao Béo - Đừng nản chí!', 30000, './6.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
@@ -118,78 +122,78 @@
 
             <!-- Keychains -->
             <div class="product-card" data-category="keychain" data-id="7">
-                <div class="product-image" onclick="goToProductDetail(7)" style="cursor: pointer;"><img src="./7.png" alt="Keychain Set Sao Béo – Móc Khóa Phụ Kiện Trang Trí"></div>
+                <div class="product-image" onclick="goToProductDetail(7)" style="cursor: pointer;"><img src="./7.png" alt="Keychain Set Sao Béo – Keychain Phụ Kiện Trang Trí"></div>
                 <div class="product-info">
-                    <h3 class="product-name" onclick="goToProductDetail(7)" style="cursor: pointer;">Keychain Set Sao Béo – Móc Khóa Phụ Kiện Trang Trí</h3>
+                        <h3 class="product-name" onclick="goToProductDetail(7)" style="cursor: pointer;">Keychain Set Sao Béo – Keychain Phụ Kiện Trang Trí</h3>
                     <p class="product-category">Keychain set</p>
                     <p class="product-price">50.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(7, 'Keychain Set Sao Béo–Móc Khóa Phụ Kiện Trang Trí', 50000, './7.png')">
+                    <button class="add-to-cart" onclick="addToCart(7, 'Keychain Set Sao Béo–Keychain Phụ Kiện Trang Trí', 50000, './7.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="keychain" data-id="8">
-                <div class="product-image" onclick="goToProductDetail(8)" style="cursor: pointer;"><img src="./8.png" alt="Móc Khóa Sao Béo – "Đừng nản chí!""></div>
+                <div class="product-image" onclick="goToProductDetail(8)" style="cursor: pointer;"><img src="./8.png" alt="Keychain Sao Béo – \"Đừng nản chí!\""></div>
                 <div class="product-info">
-                    <h3 class="product-name" onclick="goToProductDetail(8)" style="cursor: pointer;">Móc Khóa Sao Béo – "Đừng nản chí!"</h3>
+                        <h3 class="product-name" onclick="goToProductDetail(8)" style="cursor: pointer;">Keychain Sao Béo – "Đừng nản chí!"</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(8, 'Móc Khóa Sao Béo – "Đừng nản chí!"', 30000, './8.png')">
+                    <button class="add-to-cart" onclick="addToCart(8, 'Keychain Sao Béo – “Đừng nản chí!”', 30000, './8.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="keychain" data-id="9">
-                <div class="product-image" onclick="goToProductDetail(9)" style="cursor: pointer;"><img src="./9.png" alt="Móc Khóa Sao Béo – "Đi đường cẩn thận"" title="Móc Khóa Sao Béo – "Đi đường cẩn thận""></div>
+                <div class="product-image" onclick="goToProductDetail(9)" style="cursor: pointer;"><img src="./9.png" alt="Keychain Sao Béo – \"Đi đường cẩn thận\"" title="Keychain Sao Béo – \"Đi đường cẩn thận\""></div>
                 <div class="product-info">
-                    <h3 class="product-name" onclick="goToProductDetail(9)" style="cursor: pointer;">Móc Khóa Sao Béo – "Đi đường cẩn thận"</h3>
+                        <h3 class="product-name" onclick="goToProductDetail(9)" style="cursor: pointer;">Keychain Sao Béo – "Đi đường cẩn thận"</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(9, 'Móc Khóa Sao Béo – "Đi đường cẩn thận"', 30000, './9.png')">
+                    <button class="add-to-cart" onclick="addToCart(9, 'Keychain Sao Béo – “Đi đường cẩn thận”', 30000, './9.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="keychain" data-id="10">
-                <div class="product-image" onclick="goToProductDetail(10)" style="cursor: pointer;"><img src="./10.png" alt="Móc Khóa Sao Béo – "Trộm vía may mắn"" title="Móc Khóa Sao Béo – "Trộm vía may mắn""></div>
+                <div class="product-image" onclick="goToProductDetail(10)" style="cursor: pointer;"><img src="./10.png" alt="Keychain Sao Béo – \"Trộm vía may mắn\"" title="Keychain Sao Béo – \"Trộm vía may mắn\""></div>
                 <div class="product-info">
-                    <h3 class="product-name" onclick="goToProductDetail(10)" style="cursor: pointer;">Móc Khóa Sao Béo – "Trộm vía may mắn"</h3>
+                        <h3 class="product-name" onclick="goToProductDetail(10)" style="cursor: pointer;">Keychain Sao Béo – "Trộm vía may mắn"</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(10, 'Móc Khóa Sao Béo – "Trộm vía may mắn"', 30000, './10.png')">
+                    <button class="add-to-cart" onclick="addToCart(10, 'Keychain Sao Béo – “Trộm vía may mắn”', 30000, './10.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="keychain" data-id="11">
-                <div class="product-image" onclick="goToProductDetail(11)" style="cursor: pointer;"><img src="./11.png" alt="Móc Khóa Sao Béo – "Không sao đâu"" title="Móc Khóa Sao Béo – "Không sao đâu""></div>
+                <div class="product-image" onclick="goToProductDetail(11)" style="cursor: pointer;"><img src="./11.png" alt="Keychain Sao Béo – \"Không sao đâu\"" title="Keychain Sao Béo – \"Không sao đâu\""></div>
                 <div class="product-info">
-                    <h3 class="product-name" onclick="goToProductDetail(11)" style="cursor: pointer;">Móc Khóa Sao Béo – "Không sao đâu"</h3>
+                        <h3 class="product-name" onclick="goToProductDetail(11)" style="cursor: pointer;">Keychain Sao Béo – "Không sao đâu"</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(11, 'Móc Khóa Sao Béo – "Không sao đâu"', 30000, './11.png')">
+                    <button class="add-to-cart" onclick="addToCart(11, 'Keychain Sao Béo – “Không sao đâu”', 30000, './11.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
             <div class="product-card" data-category="keychain" data-id="12">
-                <div class="product-image" onclick="goToProductDetail(12)" style="cursor: pointer;"><img src="./12.png" alt="Móc Khóa Sao Béo – "Nhớ giữ sức khỏe"" title="Móc Khóa Sao Béo – "Nhớ giữ sức khỏe""></div>
+                <div class="product-image" onclick="goToProductDetail(12)" style="cursor: pointer;"><img src="./12.png" alt="Keychain Sao Béo – \"Nhớ giữ sức khỏe\"" title="Keychain Sao Béo – \"Nhớ giữ sức khỏe\""></div>
                 <div class="product-info">
-                    <h3 class="product-name" onclick="goToProductDetail(12)" style="cursor: pointer;">Móc Khóa Sao Béo – "Nhớ giữ sức khỏe"</h3>
+                        <h3 class="product-name" onclick="goToProductDetail(12)" style="cursor: pointer;">Keychain Sao Béo – "Nhớ giữ sức khỏe"</h3>
                     <p class="product-category">Keychain</p>
                     <p class="product-price">30.000₫</p>
-                    <button class="add-to-cart" onclick="addToCart(12, 'Móc Khóa Sao Béo – "Nhớ giữ sức khỏe"', 30000, './12.png')">
+                    <button class="add-to-cart" onclick="addToCart(12, 'Keychain Sao Béo – “Nhớ giữ sức khỏe”', 30000, './12.png')">
                         Thêm vào giỏ 🛒
                     </button>
                 </div>
             </div>
 
-            <!-- Bestie Set items (appear on listing) -->
+            <!-- Combo items (appear on listing) -->
             <div class="product-card" data-category="bestie" data-id="13">
                 <div class="product-image" onclick="goToProductDetail(13)" style="cursor: pointer;"><img src="./13.png" alt="Combo Keychain 'Trộm vía may mắn' & Sticker Set cute phụ kiện trang trí Sao Béo" title="Combo Keychain 'Trộm vía may mắn' & Sticker Set cute phụ kiện trang trí Sao Béo"></div>
                 <div class="product-info">
@@ -257,7 +261,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>🌟 Sao Béo</h3>
-                <p>“Sticker xinh – Keychain yêu, mang đi đâu cũng thấy dễ thương</p>
+                <p>"Shine silly - shine bright"</p>
             </div>
             <div class="footer-section">
                 <h3>Liên Kết</h3>
@@ -270,22 +274,36 @@
             <div class="footer-section">
                 <h3>Liên Hệ</h3>
                 <ul>
-                    <li>📧 saobeo@gmail.com</li>
-                    <li>📞 0123 456 789</li>
-                    <li>📍 Hà Nội, Việt Nam</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> saobeo@gmail.com</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 0123 456 789</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Hà Nội, Việt Nam</li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Theo Dõi</h3>
                 <div class="social-links">
-                    <a href="#">📘</a>
-                    <a href="#">📸</a>
-                    <a href="#">🐦</a>
+                    <a href="#" title="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://shopee.vn/saobeocreativesouvenir" target="_blank" title="Shopee">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Sao Béo. Made with 💖</p>
+            <p>© 2026 Sao Béo. Made With Love</p>
         </div>
     </footer>
 

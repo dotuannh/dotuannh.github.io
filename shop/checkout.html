@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - Sao Béo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-color: #004aad;
+            --accent-color: #f7d408;
+        }
+
+        .checkout-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+        }
+
+        .checkout-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .checkout-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .checkout-section h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group label .required {
+            color: var(--primary-color);
+            margin-left: 3px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #ff4444;
+        }
+
+        .form-group .error-message {
+            color: #ff4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .shipping-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .shipping-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .shipping-option:hover {
+            border-color: var(--primary-color);
+        }
+
+        .shipping-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 74, 173, 0.05);
+        }
+
+        .shipping-option input[type="radio"] {
+            margin-right: 0.75rem;
+        }
+
+        .shipping-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .shipping-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .shipping-eta {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .shipping-fee {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .payment-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary-color);
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 74, 173, 0.05);
+        }
+
+        .payment-option input[type="radio"] {
+            margin-right: 0.75rem;
+        }
+
+        .payment-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+        .payment-option.selected .payment-details {
+            display: block;
+        }
+
+        .order-summary {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 2rem;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+
+        .order-summary h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .order-items {
+            margin-bottom: 1.5rem;
+        }
+
+        .order-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .order-item-info {
+            flex: 1;
+        }
+
+        .order-item-name {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .order-item-quantity {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .order-item-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .discount-code {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .discount-code input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .discount-code button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .discount-code button:hover {
+            background-color: #003580;
+        }
+
+        .order-totals {
+            margin-bottom: 1.5rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            color: #666;
+        }
+
+        .total-row.grand-total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            padding-top: 1rem;
+            border-top: 2px solid #333;
+            margin-top: 1rem;
+        }
+
+        .total-row.grand-total .amount {
+            color: var(--primary-color);
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .place-order-btn:hover {
+            background-color: #003580;
+        }
+
+        .place-order-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .policy-agreement {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .policy-agreement a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .policy-agreement a:hover {
+            text-decoration: underline;
+        }
+
+        .guest-checkout-notice {
+            background-color: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .guest-checkout-notice p {
+            margin: 0;
+            color: #333;
+        }
+
+        .collapsible-section {
+            display: none;
+        }
+
+        .collapsible-section.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .order-summary {
+                position: static;
+                max-height: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="shop.html" class="logo">
+                <span>🌟</span> Sao Béo
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="products.html">Sản Phẩm</a></li>
+                <li><a href="about.html">Về Chúng Tôi</a></li>
+                <li><a href="products.html?category=sticker">Sticker</a></li>
+                <li><a href="products.html?category=keychain">Keychain</a></li>
+                <li><a href="products.html?category=bestie">Combo</a></li>
+            </ul>
+            <a href="cart.html" class="cart-icon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <a href="login.html" class="login-icon" title="Đăng nhập">
+                Đăng nhập
+            </a>
+        </nav>
+    </header>
+
+    <div class="checkout-container" style="margin-top: 6rem;">
+        <!-- Left Column: Forms -->
+        <div class="checkout-left">
+            <!-- Guest Checkout Notice -->
+            <div class="guest-checkout-notice">
+                <p>✨ Bạn đang thanh toán với tư cách khách. <a href="login.html?redirect=checkout.html" style="color: var(--primary-color); font-weight: 600;">Đăng nhập</a> để tự động điền thông tin.</p>
+            </div>
+
+            <!-- Customer Information -->
+            <div class="checkout-section">
+                <h2>📋 Thông Tin Khách Hàng</h2>
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="fullName">Họ và Tên <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required>
+                        <span class="error-message">Vui lòng nhập họ tên</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Số Điện Thoại <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="0123456789" required>
+                            <span class="error-message">Số điện thoại không hợp lệ</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                            <span class="error-message">Email không hợp lệ</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Địa Chỉ <span class="required">*</span></label>
+                        <input type="text" id="address" name="address" placeholder="Số nhà, tên đường, tên tòa nhà" required>
+                        <span class="error-message">Vui lòng nhập địa chỉ</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="province">Tỉnh/Thành Phố <span class="required">*</span></label>
+                            <select id="province" name="province" required>
+                                <option value="">-- Chọn Tỉnh/Thành --</option>
+                            </select>
+                            <span class="error-message">Vui lòng chọn tỉnh/thành</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="district">Quận/Huyện <span class="required">*</span></label>
+                            <select id="district" name="district" required disabled>
+                                <option value="">-- Chọn Quận/Huyện --</option>
+                            </select>
+                            <span class="error-message">Vui lòng chọn quận/huyện</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ward">Phường/Xã <span class="required">*</span></label>
+                        <select id="ward" name="ward" required disabled>
+                            <option value="">-- Chọn Phường/Xã --</option>
+                        </select>
+                        <span class="error-message">Vui lòng chọn phường/xã</span>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="differentAddress" name="differentAddress">
+                        <label for="differentAddress">Giao hàng đến địa chỉ khác</label>
+                    </div>
+
+                    <div id="alternateAddress" class="collapsible-section">
+                        <div class="form-group">
+                            <label for="altFullName">Tên Người Nhận</label>
+                            <input type="text" id="altFullName" name="altFullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="altPhone">Số Điện Thoại</label>
+                            <input type="tel" id="altPhone" name="altPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="altAddress">Địa Chỉ</label>
+                            <input type="text" id="altAddress" name="altAddress">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Shipping Method -->
+            <div class="checkout-section">
+                <h2>🚚 Phương Thức Vận Chuyển</h2>
+                <div class="shipping-options">
+                    <label class="shipping-option selected" data-fee="20000">
+                        <input type="radio" name="shipping" value="standard" checked>
+                        <div class="shipping-info">
+                            <div>
+                                <div class="shipping-name">Giao Hàng Tiêu Chuẩn</div>
+                                <div class="shipping-eta">Dự kiến: 3-5 ngày</div>
+                            </div>
+                            <div class="shipping-fee">20.000₫</div>
+                        </div>
+                    </label>
+
+                    <label class="shipping-option" data-fee="35000">
+                        <input type="radio" name="shipping" value="express">
+                        <div class="shipping-info">
+                            <div>
+                                <div class="shipping-name">Giao Hàng Nhanh</div>
+                                <div class="shipping-eta">Dự kiến: 1-2 ngày</div>
+                            </div>
+                            <div class="shipping-fee">35.000₫</div>
+                        </div>
+                    </label>
+
+                    <label class="shipping-option" data-fee="50000">
+                        <input type="radio" name="shipping" value="sameday">
+                        <div class="shipping-info">
+                            <div>
+                                <div class="shipping-name">Giao Hàng Trong Ngày</div>
+                                <div class="shipping-eta">Dự kiến: Hôm nay</div>
+                            </div>
+                            <div class="shipping-fee">50.000₫</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="checkout-section">
+                <h2>💳 Phương Thức Thanh Toán</h2>
+                <div class="payment-options">
+                    <label class="payment-option selected">
+                        <input type="radio" name="payment" value="cod" checked>
+                        <div>💵 Thanh Toán Khi Nhận Hàng (COD)</div>
+                        <div class="payment-details">
+                            <p style="color: #666; font-size: 0.875rem; margin-top: 0.5rem;">Bạn sẽ thanh toán bằng tiền mặt khi nhận hàng.</p>
+                        </div>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="bank">
+                        <div>🏦 Chuyển Khoản Ngân Hàng (QR Code)</div>
+                        <div class="payment-details">
+                            <p style="color: #666; font-size: 0.875rem; margin-bottom: 1rem;">Quét mã QR để thanh toán</p>
+                            <div style="text-align: center; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                                <div style="width: 200px; height: 200px; margin: 0 auto; background: #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: #999;">QR Code sẽ hiện ở đây</span>
+                                </div>
+                                <p style="margin-top: 1rem; font-size: 0.875rem; color: #666;">
+                                    <strong>Ngân hàng:</strong> VCB - 1234567890<br>
+                                    <strong>Chủ TK:</strong> SAO BEO STORE
+                                </p>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="ewallet">
+                        <div>📱 Ví Điện Tử (MoMo, ZaloPay)</div>
+                        <div class="payment-details">
+                            <div class="form-group">
+                                <label>Chọn Ví Điện Tử</label>
+                                <select>
+                                    <option value="">-- Chọn Ví --</option>
+                                    <option value="momo">MoMo</option>
+                                    <option value="zalopay">ZaloPay</option>
+                                    <option value="vnpay">VNPay</option>
+                                </select>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="card">
+                        <div>💳 Thẻ Tín Dụng/Ghi Nợ</div>
+                        <div class="payment-details">
+                            <div class="form-group">
+                                <label>Số Thẻ</label>
+                                <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ngày Hết Hạn</label>
+                                    <input type="text" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="text" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Tên Chủ Thẻ</label>
+                                <input type="text" placeholder="NGUYEN VAN A">
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="checkout-section">
+                <h2>📝 Thông Tin Bổ Sung</h2>
+                <div class="form-group">
+                    <label for="orderNotes">Ghi Chú Đơn Hàng (Tùy chọn)</label>
+                    <textarea id="orderNotes" name="orderNotes" rows="4" placeholder="VD: Để hàng ở cổng, gọi trước khi giao..."></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="needInvoice" name="needInvoice">
+                    <label for="needInvoice">Xuất Hóa Đơn VAT</label>
+                </div>
+
+                <div id="invoiceDetails" class="collapsible-section">
+                    <div class="form-group">
+                        <label for="companyName">Tên Công Ty</label>
+                        <input type="text" id="companyName" name="companyName">
+                    </div>
+                    <div class="form-group">
+                        <label for="taxId">Mã Số Thuế</label>
+                        <input type="text" id="taxId" name="taxId">
+                    </div>
+                    <div class="form-group">
+                        <label for="companyAddress">Địa Chỉ Công Ty</label>
+                        <input type="text" id="companyAddress" name="companyAddress">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Order Summary -->
+        <div>
+            <div class="order-summary">
+                <h2>📦 Đơn Hàng</h2>
+                
+                <div class="order-items" id="orderItems">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <div class="discount-code">
+                    <input type="text" id="discountCode" placeholder="Nhập mã giảm giá">
+                    <button type="button" onclick="applyDiscount()">Áp Dụng</button>
+                </div>
+
+                <div class="order-totals">
+                    <div class="total-row">
+                        <span>Tạm Tính:</span>
+                        <span id="subtotal">0₫</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Phí Vận Chuyển:</span>
+                        <span id="shippingFee">20.000₫</span>
+                    </div>
+                    <div class="total-row" id="discountRow" style="display: none;">
+                        <span>Giảm Giá:</span>
+                        <span id="discountAmount" style="color: #4caf50;">-0₫</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span>Tổng Cộng:</span>
+                        <span class="amount" id="grandTotal">0₫</span>
+                    </div>
+                </div>
+
+                <div class="policy-agreement">
+                    Bằng việc đặt hàng, bạn đồng ý với <a href="#">Điều Khoản Dịch Vụ</a> của chúng tôi.
+                </div>
+
+                <button type="button" class="place-order-btn" onclick="placeOrder()">
+                    ĐẶT HÀNG NGAY 
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🌟 Sao Béo</h3>
+                <p>"Shine silly - shine bright"</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Kết</h3>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <ul>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> saobeo@gmail.com</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 0123 456 789</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Hà Nội, Việt Nam</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Theo Dõi</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://shopee.vn/saobeocreativesouvenir" target="_blank" title="Shopee">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Sao Béo. Made With Love</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Format currency
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN') + '₫';
+        }
+
+        // Vietnam Address Data (simplified version)
+        const addressData = {
+            "Hà Nội": {
+                "Quận Ba Đình": ["Phường Phúc Xá", "Phường Trúc Bạch", "Phường Vĩnh Phúc", "Phường Cống Vị"],
+                "Quận Hoàn Kiếm": ["Phường Hàng Bạc", "Phường Hàng Bài", "Phường Hàng Trống", "Phường Chương Dương"],
+                "Quận Đống Đa": ["Phường Cát Linh", "Phường Văn Miếu", "Phường Quốc Tử Giám", "Phường Láng Thượng"],
+                "Quận Cầu Giấy": ["Phường Nghĩa Đô", "Phường Nghĩa Tân", "Phường Dịch Vọng", "Phường Quan Hoa"]
+            },
+            "TP. Hồ Chí Minh": {
+                "Quận 1": ["Phường Bến Nghé", "Phường Bến Thành", "Phường Nguyễn Thái Bình", "Phường Phạm Ngũ Lão"],
+                "Quận 3": ["Phường 1", "Phường 2", "Phường 3", "Phường Võ Thị Sáu"],
+                "Quận 5": ["Phường 1", "Phường 2", "Phường 3", "Phường 4"],
+                "Quận Bình Thạnh": ["Phường 1", "Phường 2", "Phường 3", "Phường 5"]
+            },
+            "Đà Nẵng": {
+                "Quận Hải Châu": ["Phường Thanh Bình", "Phường Thạch Thang", "Phường Hải Châu I"],
+                "Quận Sơn Trà": ["Phường Thọ Quang", "Phường Nại Hiên Đông", "Phường Mân Thái"],
+                "Quận Ngũ Hành Sơn": ["Phường Mỹ An", "Phường Khuê Mỹ", "Phường Hòa Quý"]
+            }
+        };
+
+        // Populate provinces
+        const provinceSelect = document.getElementById('province');
+        Object.keys(addressData).forEach(province => {
+            const option = document.createElement('option');
+            option.value = province;
+            option.textContent = province;
+            provinceSelect.appendChild(option);
+        });
+
+        // Handle province change
+        provinceSelect.addEventListener('change', function() {
+            const districtSelect = document.getElementById('district');
+            const wardSelect = document.getElementById('ward');
+            
+            districtSelect.innerHTML = '<option value="">-- Chọn Quận/Huyện --</option>';
+            wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
+            wardSelect.disabled = true;
+            
+            if (this.value) {
+                districtSelect.disabled = false;
+                const districts = addressData[this.value];
+                Object.keys(districts).forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            } else {
+                districtSelect.disabled = true;
+            }
+        });
+
+        // Handle district change
+        document.getElementById('district').addEventListener('change', function() {
+            const wardSelect = document.getElementById('ward');
+            const province = document.getElementById('province').value;
+            
+            wardSelect.innerHTML = '<option value="">-- Chọn Phường/Xã --</option>';
+            
+            if (this.value && province) {
+                wardSelect.disabled = false;
+                const wards = addressData[province][this.value];
+                wards.forEach(ward => {
+                    const option = document.createElement('option');
+                    option.value = ward;
+                    option.textContent = ward;
+                    wardSelect.appendChild(option);
+                });
+            } else {
+                wardSelect.disabled = true;
+            }
+        });
+
+        // Handle different address checkbox
+        document.getElementById('differentAddress').addEventListener('change', function() {
+            document.getElementById('alternateAddress').classList.toggle('active', this.checked);
+        });
+
+        // Handle invoice checkbox
+        document.getElementById('needInvoice').addEventListener('change', function() {
+            document.getElementById('invoiceDetails').classList.toggle('active', this.checked);
+        });
+
+        // Handle shipping option selection
+        document.querySelectorAll('.shipping-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.shipping-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input[type="radio"]').checked = true;
+                updateShippingFee();
+            });
+        });
+
+        // Handle payment option selection
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input[type="radio"]').checked = true;
+            });
+        });
+
+        // Update shipping fee
+        function updateShippingFee() {
+            const selectedShipping = document.querySelector('.shipping-option.selected');
+            const fee = parseInt(selectedShipping.dataset.fee);
+            document.getElementById('shippingFee').textContent = formatCurrency(fee);
+            updateTotal();
+        }
+
+        // Load cart items
+        function loadCartItems() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const orderItemsContainer = document.getElementById('orderItems');
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                orderItemsContainer.innerHTML = '<p style="text-align: center; color: #999;">Giỏ hàng trống</p>';
+                document.querySelector('.place-order-btn').disabled = true;
+                return;
+            }
+
+            orderItemsContainer.innerHTML = cart.map(item => {
+                subtotal += item.price * item.quantity;
+                return `
+                    <div class="order-item">
+                        <img src="${item.icon}" alt="${item.name}" class="order-item-image">
+                        <div class="order-item-info">
+                            <div class="order-item-name">${item.name}</div>
+                            <div class="order-item-quantity">Số lượng: ${item.quantity}</div>
+                        </div>
+                        <div class="order-item-price">${formatCurrency(item.price * item.quantity)}</div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+            updateTotal();
+        }
+
+        // Update total
+        function updateTotal() {
+            const subtotal = parseFloat(document.getElementById('subtotal').textContent.replace(/[₫,.]/g, '')) || 0;
+            const shippingFee = parseFloat(document.getElementById('shippingFee').textContent.replace(/[₫,.]/g, '')) || 0;
+            const discountAmount = parseFloat(document.getElementById('discountAmount').textContent.replace(/[₫,.]/g, '').replace('-', '')) || 0;
+            
+            const total = subtotal + shippingFee - discountAmount;
+            document.getElementById('grandTotal').textContent = formatCurrency(total);
+        }
+
+        // Apply discount code
+        function applyDiscount() {
+            const code = document.getElementById('discountCode').value.trim().toUpperCase();
+            const discountRow = document.getElementById('discountRow');
+            const discountAmount = document.getElementById('discountAmount');
+            
+            // Simple discount codes
+            const discounts = {
+                'SAOBEO10': 10000,
+                'WELCOME20': 20000,
+                'SALE30': 30000
+            };
+
+            if (discounts[code]) {
+                discountRow.style.display = 'flex';
+                discountAmount.textContent = '-' + formatCurrency(discounts[code]);
+                updateTotal();
+                alert(' Áp dụng mã giảm giá thành công!');
+            } else if (code) {
+                alert(' Mã giảm giá không hợp lệ');
+            }
+        }
+
+        // Validate form
+        function validateForm() {
+            let isValid = true;
+            const form = document.getElementById('checkoutForm');
+            const requiredFields = form.querySelectorAll('[required]');
+
+            requiredFields.forEach(field => {
+                const formGroup = field.closest('.form-group');
+                
+                if (!field.value.trim()) {
+                    formGroup.classList.add('error');
+                    isValid = false;
+                } else {
+                    // Additional validation
+                    if (field.type === 'email' && !isValidEmail(field.value)) {
+                        formGroup.classList.add('error');
+                        isValid = false;
+                    } else if (field.type === 'tel' && !isValidPhone(field.value)) {
+                        formGroup.classList.add('error');
+                        isValid = false;
+                    } else {
+                        formGroup.classList.remove('error');
+                    }
+                }
+            });
+
+            return isValid;
+        }
+
+        // Email validation
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Phone validation (Vietnam format)
+        function isValidPhone(phone) {
+            return /^(0|\+84)[0-9]{9,10}$/.test(phone.replace(/\s/g, ''));
+        }
+
+        // Real-time validation
+        document.querySelectorAll('#checkoutForm input, #checkoutForm select').forEach(field => {
+            field.addEventListener('blur', function() {
+                const formGroup = this.closest('.form-group');
+                
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    formGroup.classList.add('error');
+                } else if (this.type === 'email' && this.value && !isValidEmail(this.value)) {
+                    formGroup.classList.add('error');
+                } else if (this.type === 'tel' && this.value && !isValidPhone(this.value)) {
+                    formGroup.classList.add('error');
+                } else {
+                    formGroup.classList.remove('error');
+                }
+            });
+
+            field.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.closest('.form-group').classList.remove('error');
+                }
+            });
+        });
+
+        // Place order
+        function placeOrder() {
+            if (!validateForm()) {
+                alert('⚠️ Vui lòng điền đầy đủ thông tin bắt buộc!');
+                // Scroll to first error
+                const firstError = document.querySelector('.form-group.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            if (cart.length === 0) {
+                alert('Giỏ hàng trống!');
+                return;
+            }
+
+            // Gather order data
+            const orderData = {
+                customer: {
+                    fullName: document.getElementById('fullName').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    address: document.getElementById('address').value,
+                    province: document.getElementById('province').value,
+                    district: document.getElementById('district').value,
+                    ward: document.getElementById('ward').value
+                },
+                shipping: {
+                    method: document.querySelector('input[name="shipping"]:checked').value,
+                    fee: document.getElementById('shippingFee').textContent
+                },
+                payment: {
+                    method: document.querySelector('input[name="payment"]:checked').value
+                },
+                items: cart,
+                totals: {
+                    subtotal: document.getElementById('subtotal').textContent,
+                    shippingFee: document.getElementById('shippingFee').textContent,
+                    discount: document.getElementById('discountAmount').textContent,
+                    total: document.getElementById('grandTotal').textContent
+                },
+                notes: document.getElementById('orderNotes').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // In a real application, this would send to a server
+            console.log('Order Data:', orderData);
+
+            // Save to localStorage (for demo purposes)
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            // Clear cart
+            localStorage.removeItem('cart');
+            updateCartCount();
+
+            // Show success message
+            alert('🎉 Đặt hàng thành công!\n\nCảm ơn bạn đã mua hàng tại Sao Béo.\nChúng tôi sẽ liên hệ với bạn sớm nhất!');
+
+            // Redirect to thank you page or home
+            window.location.href = 'index.html';
+        }
+
+        // Initialize
+        loadCartItems();
+        updateCartCount();
+    </script>
+</body>
+</html>

@@ -25,6 +25,9 @@
             width: fit-content;
             height: fit-content;
             margin: 0 auto;
+            position: sticky;
+            top: 4rem;
+            align-self: start;
         }
 
         .detail-image img {
@@ -135,6 +138,11 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .detail-image {
+                position: static;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -150,11 +158,14 @@
                 <li><a href="products.html">Sản Phẩm</a></li>
                 <li><a href="products.html?category=sticker">Sticker</a></li>
                 <li><a href="products.html?category=keychain">Keychain</a></li>
-                <li><a href="products.html?category=bestie">Bestie Set</a></li>
+                <li><a href="products.html?category=bestie">Combo</a></li>
             </ul>
             <a href="cart.html" class="cart-icon">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <a href="login.html" class="login-icon" title="Đăng nhập">
+                Đăng nhập
             </a>
         </nav>
     </header>
@@ -190,6 +201,56 @@
         </div>
 
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🌟 Sao Béo</h3>
+                <p>Sao Béo - Creative Souvenir - Cửa hàng trực tuyến</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Kết</h3>
+                <ul>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <ul>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> saobeo@gmail.com</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 0123 456 789</li>
+                    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B7C99" stroke-width="2" style="vertical-align: middle; margin-right: 0.4rem;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Hà Nội, Việt Nam</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Theo Dõi</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://shopee.vn/saobeocreativesouvenir" target="_blank" title="Shopee">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Sao Béo. Made With Love</p>
+        </div>
+    </footer>
 
     <script>
         const products = {
@@ -290,10 +351,10 @@
                 ]
             },
             7: {
-                name: "Keychain Set Sao Béo–Móc Khóa Phụ Kiện Trang Trí",
+                name: "Keychain Set Sao Béo Phụ Kiện Trang Trí",
                 price: 50000,
                 image: "./7.png",
-                intro: "🌟 MÓC KHÓA SAO BÉO🌟\nDòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -305,10 +366,10 @@
                 ]
             },
             8: {
-                name: "Móc Khóa Sao Béo – \"Đừng nản chí!\"",
+                name: "Keychain Sao Béo – \"Đừng nản chí!\"",
                 price: 30000,
                 image: "./8.png",
-                intro: "🌟 MÓC KHÓA SAO BÉO🌟\nDòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -320,10 +381,10 @@
                 ]
             },
             9: {
-                name: "Móc Khóa Sao Béo – \"Đi đường cẩn thận\"",
+                name: "Keychain Sao Béo – \"Đi đường cẩn thận\"",
                 price: 30000,
                 image: "./9.png",
-                intro: "🌟 MÓC KHÓA SAO BÉO🌟\nDòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -335,10 +396,10 @@
                 ]
             },
             10: {
-                name: "Móc Khóa Sao Béo – \"Trộm vía may mắn\"",
+                name: "Keychain Sao Béo – \"Trộm vía may mắn\"",
                 price: 30000,
                 image: "./10.png",
-                intro: "🌟 MÓC KHÓA SAO BÉO🌟\nDòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -350,10 +411,10 @@
                 ]
             },
             11: {
-                name: "Móc Khóa Sao Béo – \"Không sao đâu\"",
+                name: "Keychain Sao Béo – \"Không sao đâu\"",
                 price: 30000,
                 image: "./11.png",
-                intro: "🌟 MÓC KHÓA SAO BÉO🌟\nDòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -365,10 +426,10 @@
                 ]
             },
             12: {
-                name: "Móc Khóa Sao Béo – \"Nhớ giữ sức khỏe\"",
+                name: "Keychain Sao Béo – \"Nhớ giữ sức khỏe\"",
                 price: 30000,
                 image: "./12.png",
-                intro: "🌟 MÓC KHÓA SAO BÉO🌟\n\nDòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: "🌟 KEYCHAIN SAO BÉO🌟\n\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -383,9 +444,9 @@
                 name: "Combo Keychain 'Trộm vía may mắn' & Sticker Set",
                 price: 60000,
                 image: "./13.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Móc khóa Sao Béo:",
+                    "🌟 Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
@@ -396,7 +457,7 @@
                     "Đặc tính: Công nghệ in sắc nét trên vật liệu chống nước cao cấp, bền bỉ ngay cả khi dán trên các vật dụng thường xuyên tiếp xúc với môi trường bên ngoài."
                 ],
                 notes: [
-                    "Móc khóa: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Keychain: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
                     "Sticker: Làm sạch và khô bề mặt trước khi dán để đảm bảo độ bám dính tốt nhất. Tránh dán lên các bề mặt quá nhám hoặc có vải để sticker không bị bong góc.",
                     "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau."
                 ]
@@ -405,9 +466,9 @@
                 name: "Combo Keychain 'Đi đường cẩn thận' & Sticker Set",
                 price: 60000,
                 image: "./14.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Móc khóa Sao Béo:",
+                    "🌟 Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
@@ -418,7 +479,7 @@
                     "Đặc tính: Công nghệ in sắc nét trên vật liệu chống nước cao cấp, bền bỉ ngay cả khi dán trên các vật dụng thường xuyên tiếp xúc với môi trường bên ngoài."
                 ],
                 notes: [
-                    "Móc khóa: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Keychain: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
                     "Sticker: Làm sạch và khô bề mặt trước khi dán để đảm bảo độ bám dính tốt nhất. Tránh dán lên các bề mặt quá nhám hoặc có vải để sticker không bị bong góc.",
                     "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau."
                 ]
@@ -427,9 +488,9 @@
                 name: "Combo Keychain 'Không sao đâu' & Sticker Set",
                 price: 60000,
                 image: "./15.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Móc khóa Sao Béo:",
+                    "🌟 Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
@@ -440,7 +501,7 @@
                     "Đặc tính: Công nghệ in sắc nét trên vật liệu chống nước cao cấp, bền bỉ ngay cả khi dán trên các vật dụng thường xuyên tiếp xúc với môi trường bên ngoài."
                 ],
                 notes: [
-                    "Móc khóa: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Keychain: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
                     "Sticker: Làm sạch và khô bề mặt trước khi dán để đảm bảo độ bám dính tốt nhất. Tránh dán lên các bề mặt quá nhám hoặc có vải để sticker không bị bong góc.",
                     "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau."
                 ]
@@ -449,9 +510,9 @@
                 name: "Combo Keychain 'Nhớ giữ sức khỏe' & Sticker Set",
                 price: 60000,
                 image: "./16.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Móc khóa Sao Béo:",
+                    "🌟 Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
@@ -462,7 +523,7 @@
                     "Đặc tính: Công nghệ in sắc nét trên vật liệu chống nước cao cấp, bền bỉ ngay cả khi dán trên các vật dụng thường xuyên tiếp xúc với môi trường bên ngoài."
                 ],
                 notes: [
-                    "Móc khóa: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Keychain: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
                     "Sticker: Làm sạch và khô bề mặt trước khi dán để đảm bảo độ bám dính tốt nhất. Tránh dán lên các bề mặt quá nhám hoặc có vải để sticker không bị bong góc.",
                     "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau."
                 ]
@@ -471,9 +532,9 @@
                 name: "Combo Keychain 'Đừng nản chí!' & Sticker Set",
                 price: 60000,
                 image: "./17.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nMóc khóa: Dòng móc khóa độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Móc khóa Sao Béo:",
+                    "🌟 Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
@@ -484,7 +545,7 @@
                     "Đặc tính: Công nghệ in sắc nét trên vật liệu chống nước cao cấp, bền bỉ ngay cả khi dán trên các vật dụng thường xuyên tiếp xúc với môi trường bên ngoài."
                 ],
                 notes: [
-                    "Móc khóa: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
+                    "Keychain: Sản phẩm có một lớp màng nilon mỏng trên bề mặt để tránh trầy xước khi vận chuyển, bạn hãy bóc ra để thấy độ sáng bóng của nhựa Acrylic nhé!",
                     "Sticker: Làm sạch và khô bề mặt trước khi dán để đảm bảo độ bám dính tốt nhất. Tránh dán lên các bề mặt quá nhám hoặc có vải để sticker không bị bong góc.",
                     "Màu sắc: Màu sắc thực tế có thể chênh lệch nhẹ do ánh sáng hiển thị trên các thiết bị khác nhau."
                 ]

@@ -5,6 +5,7 @@
 // Initialize cart count on page load
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
+    enableCardAddToCart();
 });
 
 // Navigate to product detail page
@@ -40,6 +41,11 @@ function addToCart(id, name, price, icon) {
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
     showToast(`Đã thêm "${name}" vào giỏ hàng! 🎉`);
+}
+
+// Allow clicking anywhere on a product card to add it to cart
+function enableCardAddToCart() {
+    // No-op to preserve navigation to product detail pages on all cards.
 }
 
 // Update cart count badge
