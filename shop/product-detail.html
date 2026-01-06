@@ -86,6 +86,16 @@
             left: 0;
             color: var(--primary-color);
             font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        #productSpecs li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .detail-section li.no-before:before {
@@ -152,7 +162,7 @@
     <header>
         <nav>
             <a href="index.html" class="logo">
-                <span>🌟 </span> Sao Béo
+                <span> </span> Sao Béo
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Trang Chủ</a></li>
@@ -161,14 +171,10 @@
                 <li><a href="products.html?category=sticker">Sticker</a></li>
                 <li><a href="products.html?category=keychain">Keychain</a></li>
                 <li><a href="products.html?category=bestie">Combo</a></li>
-                <li><a href="admin.html">Đơn Hàng</a></li>
             </ul>
             <a href="cart.html" class="cart-icon">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
-            </a>
-            <a href="login.html" class="login-icon" id="authLink" title="Đăng nhập">
-                Đăng nhập
             </a>
         </nav>
     </header>
@@ -208,7 +214,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>🌟 Sao Béo</h3>
+                <h3> Sao Béo</h3>
                 <p>"Shine silly - shine bright"</p>
             </div>
             <div class="footer-section">
@@ -253,13 +259,7 @@
                             <line x1="3" y1="6" x2="21" y2="6"/>
                             <path d="M16 10a4 4 0 0 1-8 0"/>
                         </svg>
-                    </a>
-                    <a href="order-confirmation.html" title="Đơn hàng">
-                        <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
-                            <rect width="48" height="48" rx="24" fill="#0068FF"/>
-                            <path d="M29.5 18.5c0 1.381-1.119 2.5-2.5 2.5s-2.5-1.119-2.5-2.5S25.619 16 27 16s2.5 1.119 2.5 2.5zm-8 0c0 1.381-1.119 2.5-2.5 2.5S16.5 19.881 16.5 18.5 17.619 16 19 16s2.5 1.119 2.5 2.5zM32 24c0-5.523-4.477-10-10-10s-10 4.477-10 10c0 4.418 2.865 8.166 6.839 9.489.267.057.63.174.722.4.083.204.054.523.027.73 0 0-.096.577-.117.7-.035.206-.164.806.706.44.87-.368 4.694-2.766 6.405-4.736C30.089 28.867 32 26.616 32 24z" fill="white"/>
-                        </svg>
-                    </a>
+                   
                 </div>
             </div>
         </div>
@@ -274,7 +274,7 @@
                 name: "Sticker Set Sao Béo – Hình Dán Phụ Kiện Trang Trí",
                 price: 50000,
                 image: "./1.png",
-                intro: "🌟 BỘ STICKER SAO BÉO🌟\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " BỘ STICKER SAO BÉO\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
@@ -290,7 +290,7 @@
                 name: "Sticker Sao Béo - \"Trộm vía may mắn\"",
                 price: 30000,
                 image: "./2.png",
-                intro: "🌟 BỘ STICKER SAO BÉO🌟\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " BỘ STICKER SAO BÉO\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
@@ -306,7 +306,7 @@
                 name: "Sticker Sao Béo - \"Đi đường cẩn thận\"",
                 price: 30000,
                 image: "./3.png",
-                intro: "🌟 BỘ STICKER SAO BÉO🌟\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " BỘ STICKER SAO BÉO\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
@@ -317,12 +317,13 @@
                     "Làm sạch và khô bề mặt trước khi dán để đảm bảo độ bám dính tốt nhất.",
                     "Tránh dán lên các bề mặt quá nhám hoặc có vải để sticker không bị bong góc."
                 ]
+                
             },
             4: {
                 name: "Sticker Sao Béo - \"Nhớ giữ sức khỏe\"",
                 price: 30000,
                 image: "./4.png",
-                intro: "🌟 BỘ STICKER SAO BÉO🌟\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " BỘ STICKER SAO BÉO\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
@@ -338,7 +339,7 @@
                 name: "Sticker Sao Béo - \"Không sao đâu\"",
                 price: 30000,
                 image: "./5.png",
-                intro: "🌟 BỘ STICKER SAO BÉO🌟\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " BỘ STICKER SAO BÉO\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
@@ -354,7 +355,7 @@
                 name: "Sticker Sao Béo - \"Đừng nản chí!\"",
                 price: 30000,
                 image: "./6.png",
-                intro: "🌟 BỘ STICKER SAO BÉO🌟\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " BỘ STICKER SAO BÉO\nKhông chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
@@ -370,7 +371,7 @@
                 name: "Keychain Set Sao Béo Phụ Kiện Trang Trí",
                 price: 50000,
                 image: "./7.png",
-                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: " KEYCHAIN SAO BÉO\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -385,7 +386,7 @@
                 name: "Keychain Sao Béo – \"Đừng nản chí!\"",
                 price: 30000,
                 image: "./8.png",
-                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: " KEYCHAIN SAO BÉO\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -400,7 +401,7 @@
                 name: "Keychain Sao Béo – \"Đi đường cẩn thận\"",
                 price: 30000,
                 image: "./9.png",
-                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: " KEYCHAIN SAO BÉO\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -415,7 +416,7 @@
                 name: "Keychain Sao Béo – \"Trộm vía may mắn\"",
                 price: 30000,
                 image: "./10.png",
-                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: " KEYCHAIN SAO BÉO\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -430,7 +431,7 @@
                 name: "Keychain Sao Béo – \"Không sao đâu\"",
                 price: 30000,
                 image: "./11.png",
-                intro: "🌟 KEYCHAIN SAO BÉO🌟\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: " KEYCHAIN SAO BÉO\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -445,7 +446,7 @@
                 name: "Keychain Sao Béo – \"Nhớ giữ sức khỏe\"",
                 price: 30000,
                 image: "./12.png",
-                intro: "🌟 KEYCHAIN SAO BÉO🌟\n\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
+                intro: " KEYCHAIN SAO BÉO\n\nDòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.",
                 specs: [
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
@@ -460,13 +461,13 @@
                 name: "Combo Keychain 'Trộm vía may mắn' & Sticker Set",
                 price: 60000,
                 image: "./13.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " COMBO SAO BÉO: KEYCHAIN & STICKER SET \nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Keychain Sao Béo:",
+                    " Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
-                    "🌟 Bộ Sticker Sao Béo:",
+                    " Bộ Sticker Sao Béo:",
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
                     "Số lượng: Mỗi gói có 25 hình, mỗi mẫu 5 hình (5 mẫu/túi).",
@@ -482,13 +483,13 @@
                 name: "Combo Keychain 'Đi đường cẩn thận' & Sticker Set",
                 price: 60000,
                 image: "./14.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " COMBO SAO BÉO: KEYCHAIN & STICKER SET \nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Keychain Sao Béo:",
+                    " Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
-                    "🌟 Bộ Sticker Sao Béo:",
+                    " Bộ Sticker Sao Béo:",
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
                     "Số lượng: Mỗi gói có 25 hình, mỗi mẫu 5 hình (5 mẫu/túi).",
@@ -504,13 +505,13 @@
                 name: "Combo Keychain 'Không sao đâu' & Sticker Set",
                 price: 60000,
                 image: "./15.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " COMBO SAO BÉO: KEYCHAIN & STICKER SET \nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Keychain Sao Béo:",
+                    " Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
-                    "🌟 Bộ Sticker Sao Béo:",
+                    " Bộ Sticker Sao Béo:",
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
                     "Số lượng: Mỗi gói có 25 hình, mỗi mẫu 5 hình (5 mẫu/túi).",
@@ -526,13 +527,13 @@
                 name: "Combo Keychain 'Nhớ giữ sức khỏe' & Sticker Set",
                 price: 60000,
                 image: "./16.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " COMBO SAO BÉO: KEYCHAIN & STICKER SET \nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Keychain Sao Béo:",
+                    " Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
-                    "🌟 Bộ Sticker Sao Béo:",
+                    " Bộ Sticker Sao Béo:",
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
                     "Số lượng: Mỗi gói có 25 hình, mỗi mẫu 5 hình (5 mẫu/túi).",
@@ -548,13 +549,13 @@
                 name: "Combo Keychain 'Đừng nản chí!' & Sticker Set",
                 price: 60000,
                 image: "./17.png",
-                intro: "🌟 COMBO SAO BÉO: KEYCHAIN & STICKER SET 🌟\nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
+                intro: " COMBO SAO BÉO: KEYCHAIN & STICKER SET \nKeychain: Dòng Keychain độc quyền từ Sao Béo không chỉ là món phụ kiện trang trí mà còn là những \"lời nhắc nhở nhỏ bé\" đồng hành cùng bạn qua mọi cung bậc cảm xúc. Sản phẩm tôn vinh vẻ đẹp của sự không hoàn hảo và mang lại sự an ủi tinh thần cho thế hệ Gen Z trong cuộc sống hiện đại.\n\nSticker: Không chỉ đơn thuần là những miếng dán trang trí, bộ sticker từ Sao Béo là cách để Gen Z thể hiện cá tính, sự hài hước và vỗ về tâm hồn mỗi ngày.",
                 specs: [
-                    "🌟 Keychain Sao Béo:",
+                    " Keychain Sao Béo:",
                     "Chất liệu: Nhựa Acrylic 2 lớp (double board) cao cấp, giúp bảo vệ hình in luôn sắc nét, bền màu và không lo trầy xước.",
                     "Kích thước: 7cm, tỷ lệ lý tưởng để tạo điểm nhấn trên balo, túi xách, chìa khóa hoặc hộp bút.",
                     "Độ bền: Khả năng chống nước hiệu quả, phù hợp với nhu cầu sử dụng hằng ngày.",
-                    "🌟 Bộ Sticker Sao Béo:",
+                    " Bộ Sticker Sao Béo:",
                     "Chất liệu: Decal PP loại die-cut sticker, bạn chỉ cần bóc và dán cực kỳ tiện lợi.",
                     "Kích thước: 8cm, kích thước lý tưởng để tạo điểm nhấn rõ nét mà không quá chiếm chỗ.",
                     "Số lượng: Mỗi gói có 25 hình, mỗi mẫu 5 hình (5 mẫu/túi).",
@@ -602,7 +603,7 @@
             document.getElementById('productSpecs').innerHTML = (product.specs || []).map(s => {
                 const trimmed = String(s).trim();
                 const escaped = escapeHtml(s);
-                if (trimmed.startsWith('🌟')) return `<li class="no-before">${escaped}</li>`;
+                if (trimmed.startsWith('')) return `<li class="no-before">${escaped}</li>`;
                 return `<li>${escaped}</li>`;
             }).join('');
             document.getElementById('productNotes').innerHTML = (product.notes || []).map(n => `<li>${escapeHtml(n)}</li>`).join('');
