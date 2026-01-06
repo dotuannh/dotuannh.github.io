@@ -22,14 +22,6 @@ function goToProductDetail(productId) {
 
 // Add item to cart
 function addToCart(id, name, price, icon) {
-    // Check if user is logged in
-    const currentUser = localStorage.getItem('currentUser');
-    if (!currentUser) {
-        alert('❌ Vui lòng đăng nhập trước khi thêm sản phẩm vào giỏ hàng!');
-        window.location.href = 'login.html';
-        return;
-    }
-    
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
     // Check if item already exists
