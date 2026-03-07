@@ -11,16 +11,16 @@
 
     /* Tabs container */
     .tabs {
-      display: flex;
-      border-bottom: 2px solid #333;
-      margin-bottom: 15px;
+      display: flex; /* sắp xếp tab theo hàng ngang */
+      border-bottom: 1px solid #333; /* viền dưới 1px màu đen */
+      margin-bottom: 15px /* cách dưới 15px từ vùng nội dung */
     }
 
     .tab {
-      padding: 10px 16px;
-      cursor: pointer;
+      padding: 20px 2px;
+      cursor: pointer; 
       border: 1px solid #333;
-      border-bottom: none;
+      border-bottom: none;   /* bỏ viền dưới (để đường viền của .tabs) */
       background: #f0f0f0;
       margin-right: 5px;
     }
@@ -46,11 +46,11 @@
     .content {
       border: 1px solid #333;
       padding: 15px;
-      display: none;
+      display: none;   /* ẩn mặc định (chỉ 1 content hiển thị) */
     }
 
     .content.active {
-      display: block;
+      display: block;  /* hiển thị khối nội dung khi có class active */
     }
   </style>
 </head>
@@ -60,7 +60,7 @@
 
   <div class="tabs">
     <div class="tab active" onclick="switchTab('features', this)">
-      Features &reg;<span class="arrow">→</span>
+      Features &reg;<span class="arrow">→</span> 
     </div>
     <div class="tab inactive" onclick="switchTab('pricing', this)">
       Pricing €

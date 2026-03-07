@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8; /* màu nền trang */
+  min-height: 100vh; /* chiều cao tối thiểu bằng chiều cao cửa sổ */
+  display: flex;  /* sử dụng flex để sắp xếp nội dung form */
+  justify-content: center; /* căn giữa theo chiều ngang */
+  align-items: center;  /* căn giữa theo chiều dọc */
+}
+
+form {
+  background: #fff;
+  padding: 20px 25px; /* khoảng cách bên trong form */
+  border-radius: 10px; /* bo góc form tròn ko bị vuông */
+  width: 350px;
+  display: flex;
+  flex-direction: column; /* sắp xếp các phần tử con theo cột trên xuống dưới, ko xếp ngang */
+  gap: 15px; /* khoảng cách giữa các phần tử con */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* tạo bóng mờ dưới form */
+
+}  
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+label { /* áp dụng cho các chữ mô tả ô cần nhâp */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input { /* áp dụng cho tất cả ô cần nhập */
+  padding: 8px; /* khoảng trống bên trong ô nhập */
+  border-radius: 5px; /* bo tròn góc ô cần nhập */
+  border: 1px solid #ccc; /* viền màu ô cần nhập */
+  font-size: 14px;
+}
+
+input:focus { /* click vào ô được nhập */
+  outline: none; 
+  border-color: #007bff;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  display: none;
+}
+
+.strength {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.weak {
+  color: red;
+}
+
+.medium {
+  color: orange;
+}
+
+.strong {
+  color: green;
+}
+
+button {
+  padding: 10px;
+  border: none; 
+  background: #007bff;
+  border-radius: 5px; /* bo tròn góc nút mình bấm */
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer; /* di chuột vào hiện hình bàn tay */
+}
+
+button:hover {
+  background: #0056b3;
+}

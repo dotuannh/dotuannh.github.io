@@ -1,0 +1,29 @@
+body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 10px; 
+    }
+
+    table { 
+      border-collapse: collapse;  
+      width: 400px; 
+    }
+
+    table, th, td {
+      border: 1px solid #000; /* table borders */
+    }
+
+    th, td {
+      padding: 10px; /* padding */
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 12px;
+      cursor: pointer; 
+    } 
+    

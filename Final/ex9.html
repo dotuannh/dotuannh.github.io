@@ -14,11 +14,10 @@
       margin-bottom: 15px;
     }
 
-    /* Grid layout */
     .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+      display: grid; /* hiển thị 4 cột */
+      grid-template-columns: repeat(4, 1fr); /* 4 cột bằng nhau */
+      gap: 15px; /* khoảng các giữa các thẻ */
       margin-bottom: 20px;
     }
 
@@ -27,14 +26,14 @@
       background: #fff;
       padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* box shadow */
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* đổ bóng nhẹ */
+      transition: transform 0.3s, box-shadow 0.3s; /* hiệu ứng chuyển tiếp mượt */
     }
 
     /* Hover effect */
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transform: translateY(-5px); /* khi hover nâng lên 5px */
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* đổ bóng khi hover đậm hơn*/
     }
 
     .price {
@@ -53,7 +52,7 @@
   <h2>Product Showcase &reg;</h2>
 
   <div class="products">
-    <div class="card">
+    <div class="card"> <!-- Thẻ sản phẩm -->
       <h3>Smartphone</h3>
       <div class="price">Price: €699</div>
       <p>High-performance smartphone → fast and reliable.</p>
@@ -74,25 +73,27 @@
     <div class="card">
       <h3>Smart Watch</h3>
       <div class="price">Price: €249</div>
-      <p>Modern smart watch → track your daily activity.</p>
+      <p>Modern smart watch  track your daily activity.</p> 
     </div>
   </div>
 
-  <button onclick="togglePrice()">Toggle Price</button>
+  <button onclick="togglePrice()">Toggle Price</button> <!-- button: nút bấm, onclick: gọi hàm JS ẩn/hiện giá -->
 
   <script>
-    function togglePrice() {
-      const prices = document.getElementsByClassName('price');
+    function togglePrice() { // Định nghĩa hàm togglePrice
+      const prices = document.getElementsByClassName('price'); // Lấy tất cả các phần tử có class 'price'
 
       for (let i = 0; i < prices.length; i++) {
         if (prices[i].style.display === 'none') {
-          prices[i].style.display = 'block';
+          prices[i].style.display = 'block'; // Hiển thị giá nếu đang ẩn
         } else {
-          prices[i].style.display = 'none';
+          prices[i].style.display = 'none'; // Ẩn giá nếu đang hiển thị
         }
       }
     }
   </script>
+
+  
 
 </body>
 </html>

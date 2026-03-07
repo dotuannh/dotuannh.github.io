@@ -7,7 +7,7 @@
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
-      padding: 20px;
+      padding: 20px; /* đệm quanh trang */
     }
 
     form {
@@ -15,11 +15,11 @@
       width: 350px;
       padding: 20px;
       border: 1px solid #ccc; /* border */
-      border-radius: 8px;
+      border-radius: 10px; 
     }
 
     label {
-      display: block;
+      display: block; /* hiển thị trên dòng riêng */
       margin-top: 10px;
       font-weight: bold;
     }
@@ -27,14 +27,16 @@
     input, textarea {
       width: 100%;
       padding: 8px;
-      margin-top: 5px;       /* spacing */
+      margin-top: 5px;       
       border: 1px solid #ccc;
       border-radius: 4px;
-      box-sizing: border-box;
+      box-sizing: border-box; /* bao gồm padding và border trong width (không làm rộng thêm) */
+      /* Mặc định: width = 100% + padding 8px → tổng = 100% + 16px → tràn.
+box-sizing: border-box → width = 100% bao gồm padding → không tràn. */
     }
 
     textarea {
-      resize: vertical;
+      resize: vertical; /* chỉ cho phép thay đổi chiều dọc, ko thay đổi chiều ngang */
       height: 80px;
     }
 
@@ -74,21 +76,30 @@
 
     <!-- Message -->
     <label for="message">Message</label>
-    <textarea id="message"></textarea>
+    <textarea id="message"></textarea>   <!-- textarea: vùng nhập text nhiều dòng (khác input chỉ 1 dòng) -->
+  <!-- textarea: nhập nhiều dòng, input: nhập 1 dòng -->
+
 
     <button type="submit">Submit</button>
 
     <div id="result" class="message"></div>
+  <!-- div id="result": vùng rỗng ban đầu, JavaScript sẽ điền text lỗi/thành công -->
+  <!-- class="message": CSS định dạng (chữ đậm, margin-top 10px) -->
+  <!-- JavaScript thay class thành "message error" (đỏ) hoặc "message success" (xanh) -->
   </form>
 
   <script>
     function validateForm() {
+        // Lấy giá trị từ 3 ô nhập, .trim() bỏ khoảng trắng đầu/cuối
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
+        // Lấy vùng hiển thị thông báo
       const result = document.getElementById('result');
 
       if (name === '' || email === '' || message === '') {
+     // === '': kiểm tra có rỗng không?
+    // ||: hoặc (nếu 1 trong 3 rỗng → lỗi)
         result.textContent = 'Please fill in all fields.';
         result.className = 'message error';
         return false;

@@ -3,21 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <title>User Registration Form</title>
-  <link rel="stylesheet" href="ex1.css" />
 </head>
 <body>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8; 
+  min-height: 100vh; 
+  display: flex;  
+  justify-content: center; 
+  align-items: center;  
+}
 
-<form id="registerForm">    <!-- Khung chứa form đăng ký -->
+form {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 10px; 
+  width: 350px;
+  display: flex;
+  flex-direction: column; 
+  gap: 15px; 
+}  
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+label { 
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input { 
+  padding: 8px; 
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+  font-size: 14px;
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+input:focus { 
+  outline: none; 
+  border-color: ghostwhite;
+}
+
+#username {
+  border: 2px solid #ccc; 
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  display: none;
+}
+
+.strength {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.weak {
+  color: red;
+}
+
+.medium {
+  color: orange;
+}
+
+.strong {
+  color: green;
+}
+
+button {
+  padding: 10px;
+  border: none; 
+  background: #007bff;
+  border-radius: 5px; 
+  color: #fff;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+</style>
+
+<form id="registerForm">  
   <h2>Register</h2>
 
-  <!-- Username -->
   <div>
-    <label for="username">Username</label>   <!-- label: chữ mô tả cho ô nhập (nhập usename) -->
+    <label for="username">Username</label>   
     <input type="text" id="username" />
     <div class="error" id="userError">Username must be 5–15 characters</div>
   </div>
 
-  <!-- Password -->
   <div>
     <label for="password">Password</label> 
     <input type="password" id="password" />
@@ -25,14 +107,21 @@
     <div class="error" id="passError">Password must contain letters and numbers</div>
   </div>
 
-  <!-- Profile Picture -->
+  
+  <div>
+    <label for="confirmPassword">Confirm Password</label> 
+    <input type="password" id="confirmPassword" />
+    <div class="strength" id="strengthText">Strength: </div>
+    <div class="error" id="passError">Password must match</div>
+  </div>
+
   <div>
     <label for="image">Profile Picture</label>
     <input type="file" id="image" accept="image/png, image/jpeg" />
     <div class="error" id="imgError">Only JPG or PNG allowed</div>
   </div>
 
-  <button type="submit">Register</button>   <!-- button: nút bấm -->
+  <button type="submit">Register</button>   
 
 </form>
 

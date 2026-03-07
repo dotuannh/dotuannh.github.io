@@ -12,18 +12,18 @@
 
     form {
       background: #fff;
-      max-width: 500px;
+      max-width: 500px;  /* rộng tối đa 500px, nhỏ hơn thì co lại */
       padding: 20px;
       border-radius: 8px;
-      border: 1px solid #ccc;
-      display: grid;                 /* CSS Grid layout */
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
+      border: 1px solid #ccc;  /* viền mỏng màu xám nhạt */
+      display: grid;  /* dùng CSS dạng lưới */
+      grid-template-columns: 1fr 1fr; /* lưới có 2 cột, mỗi cột rộng bằng nhau */
+      gap: 15px;  /* khoảng cách giữa các ô lưới là 15px */
     }
 
     h2 {
-      grid-column: span 2;
-      text-align: center;
+      grid-column: span 2; /* tiêu đề chiếm cả 2 cột */
+      text-align: center; /* căn giữa tiêu đề */
     }
 
     label {
@@ -32,15 +32,15 @@
 
     input[type="text"],
     input[type="email"] {
-      width: 100%;
+      width: 100%; /* chiếm hết chiều ngang ô lưới */
       padding: 8px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      grid-column: span 2;
+      grid-column: span 2; /* chiếm cả 2 cột */
     }
 
     .options {
-      grid-column: span 2;
+      grid-column: span 2;  /* chiếm cả 2 cột, nên radio và checkbox nằm trên một hàng đầy đủ */
     }
 
     button {
@@ -61,11 +61,11 @@
 </head>
 <body>
 
-  <form onsubmit="return validateForm()">
+  <form onsubmit="return validateForm()"> <!-- onsubmit: gọi hàm JS khi bấm nút submit, nếu trả về false thì không gửi form , true thì gửi -->
     <h2>Newsletter Subscription</h2>
 
     <!-- Full Name -->
-    <label for="fullname">Full Name</label>
+    <label for="fullname">Full Name</label> <!-- label for: liên kết nhãn với input -->
     <input type="text" id="fullname">
 
     <!-- Email -->
@@ -75,12 +75,12 @@
     <!-- Subscription Type -->
     <div class="options">
       <label>Subscription Type</label><br>
-      <input type="radio" name="sub" value="monthly"> Monthly
+      <input type="radio" name="sub" value="monthly"> Monthly  <!-- radio: nút tròn để chọn 1 trong nhiều lựa chọn, name sub: nhóm các radio cùng tên, và chỉ chọn được 1 -->
       <input type="radio" name="sub" value="yearly"> Yearly
     </div>
 
     <!-- Interests -->
-    <div class="options">
+    <div class="options"> 
       <label>Interests</label><br>
       <input type="checkbox" class="interest"> Technology<br>
       <input type="checkbox" class="interest"> Business<br>
@@ -89,41 +89,55 @@
 
     <button type="submit">Subscribe</button>
 
-    <div id="result" class="message"></div>
+    <div id="result" class="message"></div> <!-- tạo khối để hiển thị thông báo lỗi hoặc thành công -->
   </form>
 
   <script>
+    // Hàm kiểm tra form trước khi submit
     function validateForm() {
+      // Lấy giá trị email từ ô nhập, .trim() bỏ khoảng trắng đầu/cuối
       const email = document.getElementById('email').value.trim();
+      // Lấy tất cả checkbox có class="interest" (Technology, Business, Education)
       const interests = document.getElementsByClassName('interest');
+      // Lấy vùng hiển thị thông báo lỗi/thành công
       const result = document.getElementById('result');
 
-      // Email validation
+      // ===== Kiểm tra email =====
+      // .includes('@') kiểm tra email có chứa @ không, .includes('.') kiểm tra có chứa . không
+      // ! (phủ định): nếu không chứa @ HOẶC không chứa . thì lỗi
       if (!email.includes('@') || !email.includes('.')) {
+        // Đặt text lỗi vào vùng result
         result.textContent = 'Please enter a valid email address.';
+        // Thay đổi class thành 'message error' để CSS áp dụng màu đỏ
         result.className = 'message error';
+        // return false: chặn form submit (không gửi dữ liệu)
         return false;
       }
 
-      // Interest validation
-      let checked = false;
+      // ===== Kiểm tra chọn ít nhất 1 interest =====
+      let checked = false; // biến cờ: false = chưa chọn gì, true = chọn rồi
+      // Duyệt qua tất cả 3 checkbox
       for (let i = 0; i < interests.length; i++) {
+        // .checked: true nếu checkbox được chọn, false nếu không
         if (interests[i].checked) {
-          checked = true;
-          break;
+          checked = true; // tìm thấy ít nhất 1 checkbox được chọn
+          break; // dừng vòng lặp, không cần kiểm tra tiếp
         }
       }
 
+      // Nếu không tìm thấy checkbox nào được chọn (checked vẫn false)
       if (!checked) {
         result.textContent = 'Please select at least one interest.';
         result.className = 'message error';
-        return false;
+        return false; // chặn submit
       }
 
-      // Success
+      // ===== Nếu tất cả kiểm tra đều OK =====
+      // Đặt text thành công
       result.textContent = 'Subscription successful! Thank you.';
+      // Thay đổi class thành 'message success' để CSS áp dụng màu xanh
       result.className = 'message success';
-      return false; // prevent real submit
+      return false;
     }
   </script>
 
